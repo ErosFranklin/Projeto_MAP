@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMAAS</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="decoracao"></div>
+    <div class="imagemPrincipal">
+        <img src="../image/SMAAS-removebg.png" alt="Logo">
+    </div>
+    <div class="login" autocomplete="on">
+        <h2>Login</h2>
+        <form action="login.js">
+            <div class="componentes">
+                <i class="fa-solid fa-user"></i>
+                <input class="estilo_input" type="email" name="emailLogin" id="emailLogin" placeholder="usuario@gmail.com" required>
+            </div>
+            <small class="erroLogin" id="textEmail"></small>
+            <div class="componentes">
+                <i class="fa-solid fa-lock"></i>
+                <input class="estilo_input" type="password" name="senhaLogin" id="senhaLogin" placeholder="********" required>
+                <i class="fa-solid fa-eye"></i>
+            </div>
+            <small class="erroLogin" id="textSenha"></small>
+            <input type="submit" value="Acessar" id="bttEnviar">
+            <small class="erroLogin" id="textFom"></small>
+        </form>
+        <div class="bttEsquecerSenha">
+            <a href="#">Esqueceu a senha?</a>
+        </div>
+    </div>
+    <div class="bem-vindo">
+        <h1>Bem Vindo!</h1>
+        <p>Caso ainda nao tenha uma conta, clique no botao abaixo e comece. </p>
+        <a href="#" >Registra-se</a>
+    </div>
+    <div class="decoracao2"></div>
+    <script src="../javaScript/login.js"></script>
+</body>
+</html>
