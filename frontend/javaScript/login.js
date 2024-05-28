@@ -1,5 +1,5 @@
-let email = document.getElementById("emailLogin");
-let password = document.getElementById("senhaLogin");
+let email = document.getElementById("email");
+let password = document.getElementById("senha");
 let form = document.querySelector("form");
 let textForm = document.getElementById("textForm");
 let textEmail = document.getElementById("textEmail");

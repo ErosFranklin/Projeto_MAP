@@ -8,6 +8,7 @@
     --cor-icone: #243c66;
     --cor-borda: #2d6bd8;
     --cor-texto: #ffffff;
+    --cor-texto2: #005eff;
     --cor-titulo: #2f4f86;
     --cor-sombra-texto: #395fa18d;
 }
@@ -22,6 +23,16 @@ body{
 .imagemPrincipal img{
     display:flex;
     top:0;
+    left:50%;
+    position:absolute;
+    max-width:600px;
+    max-height: 600px;
+    filter:drop-shadow(0px 4px 0px var(--cor-fundo));
+    transform: translateX(-50%);
+}
+.imagemPrincipalCadastro img{
+    display:flex;
+    top:-5%;
     left:50%;
     position:absolute;
     max-width:600px;
@@ -184,5 +195,85 @@ body{
     text-align: justify;
     width: 45%;
 }
+.cadastro{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    top:60%;
+    left:50%;
+    position:absolute;
+    width:700px;
+    height: 400px;
+    padding:25px 30px;
+    border-radius:15px;
+    border: 5px outset var(--cor-borda);
+    box-shadow: 0px 4px 0px var(--cor-fundo);
+    background: #ffffff;
+    transform: translate(-50%,-50%);
+}
+.cadastro h2{
+    color:var(--cor-titulo);
+    font-size:30px;
+    margin-bottom: 0;
+}
+.cadastro p{
+    text-shadow: 0px 5px 2px var(--cor-sombra-texto);
+    font-weight: lighter;
+    font-family:'Open Sans';
+    color:var(var(--cor-texto2));
+    margin-bottom: 30px;
+}
+.containerCadastro{
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:20px;
+    width: 100%;
+}
+.componentesC{
+    position:relative;
+    width:100%;
+    border:1px solid var(--cor-titulo);
+    
+    border-radius:5px;
+    padding:4px;
+}
+.componentesC i{
+    color:var(--cor-icone);
+    font-size: 16px;
+}
+.componentesC .estilo_input{
+    width: calc(90% - 16px);
+    
+    border:none;
+    outline: none;
+    color:var(--cor-titulo);
+    font-size: 14px;
+}
+.componentesC .estilo_input::placeholder{
+    color:var(--cor-titulo);
+    font-size:14px;
+}
+.containerCadastro #bttEnviar{
+    display:flex;
+    position:absolute;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    top:85%;
+    left:75%;
+    background-image: linear-gradient(var(--cor-fundo), var(--cor-fundo2), var(--cor-fundo));
+    color:var(--cor-texto);
+    border:none;
+    padding:10px;
+    border-radius:5px;
+    width:170px;
+}
+.containerCadastro #bttEnviar:hover{
+    background-image: linear-gradient(var(--cor-fundo2), var(--cor-fundo), var(--cor-fundo2));
+    cursor:pointer;
+    box-shadow: 0px 3px 1px var(--cor-sombra-texto);
+    transition: .3s ease;
+}
+
 
 

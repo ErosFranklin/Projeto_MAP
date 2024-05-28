@@ -18,13 +18,13 @@
         <form action="login.js">
             <div class="componentes">
                 <i class="fa-solid fa-user"></i>
-                <input class="estilo_input" type="email" name="emailLogin" id="emailLogin" placeholder="usuario@gmail.com" required>
+                <input class="estilo_input" type="email" name="email" id="email" placeholder="usuario@gmail.com" required>
             </div>
             <small class="erroLogin" id="textEmail"></small>
             <div class="componentes">
                 <i class="fa-solid fa-lock"></i>
-                <input class="estilo_input" type="password" name="senhaLogin" id="senhaLogin" placeholder="********" required>
-                <i class="fa-solid fa-eye"></i>
+                <input class="estilo_input" type="password" name="senha" id="senha" placeholder="********" required>
+                <i class="fa-solid fa-eye" id="eyes" onclick="mostrarSenha()"></i>
             </div>
             <small class="erroLogin" id="textSenha"></small>
             <input type="submit" value="Acessar" id="bttEnviar">
@@ -37,9 +37,10 @@
     <div class="bem-vindo">
         <h1>Bem Vindo!</h1>
         <p>Caso ainda nao tenha uma conta, clique no botao abaixo e comece. </p>
-        <a href="#" >Registra-se</a>
+        <a href="../html/cadastro.html" target="_parent">Registra-se</a>
     </div>
     <div class="decoracao2"></div>
     <script src="../javaScript/login.js"></script>
+    <script src="../javaScript/script_eyes.js"></script>
 </body>
 </html>
