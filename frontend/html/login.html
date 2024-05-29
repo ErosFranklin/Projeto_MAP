@@ -13,25 +13,25 @@
     <div class="imagemPrincipal">
         <img src="../image/SMAAS-removebg.png" alt="Logo">
     </div>
-    <div class="login" autocomplete="on">
-        <h2>Login</h2>
+    <div class="login" autocomplete="off">
+        <span class="titulo">Login</span>
         <form action="login.js">
             <div class="componentes">
                 <i class="fa-solid fa-user"></i>
                 <input class="estilo_input" type="email" name="email" id="email" placeholder="usuario@gmail.com" required>
             </div>
-            <small class="erroLogin" id="textEmail"></small>
+            <small class="erro" id="textEmail"></small>
             <div class="componentes">
                 <i class="fa-solid fa-lock"></i>
                 <input class="estilo_input" type="password" name="senha" id="senha" placeholder="********" required>
                 <i class="fa-solid fa-eye" id="eyes" onclick="mostrarSenha()"></i>
             </div>
-            <small class="erroLogin" id="textSenha"></small>
+            <small class="erro" id="textSenha"></small>
             <input type="submit" value="Acessar" id="bttEnviar">
-            <small class="erroLogin" id="textFom"></small>
+            <small class="erro" id="textFom"></small>
         </form>
         <div class="bttEsquecerSenha">
-            <a href="#">Esqueceu a senha?</a>
+            <a href="../html/esq_senha.html" target="_blank">Esqueceu a senha?</a>
         </div>
     </div>
     <div class="bem-vindo">

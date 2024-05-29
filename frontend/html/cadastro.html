@@ -13,20 +13,19 @@
     <div class="imagemPrincipalCadastro">
         <img src="../image/SMAAS-removebg.png" alt="Logo">
     </div>
-    <div class="cadastro" autocomplete="on">
-        <h2>Cadastro de Conta</h2>
+    <div class="cadastro" autocomplete="off">
+        <span class="titulo">Cadastro de Conta</span>
         <p>Preenche as informacoes abaixo para ter acesso ao sistema.</p>
             <form class="containerCadastro" action="cadastro.js">
                 <div class="componentesC">
                     <i class="fa-solid fa-user"></i>
                     <input class="estilo_input" type="text" name="nome" id="nome" placeholder="Nome Completo" required>
-                    <small class="erroLogin" id="textNome"></small>
+                    
                 </div>
-                
                 <div class="componentesC">
                     <i class="fa-solid fa-envelope"></i>
                     <input class="estilo_input" type="email" name="email" id="email" placeholder="usuario@gmail.com" required>
-                    <small class="erroLogin" id="textEmail"></small>
+                    
                 </div>
                
                 <div class="componentesC">
@@ -37,21 +36,29 @@
                     <i class="fa-solid fa-lock"></i>
                     <input class="estilo_input" type="password" name="senha" id="senha" placeholder="Senha" required>
                     <i class="fa-solid fa-eye" id="eyes" onclick="mostrarSenha()"></i>
-                    <small class="erroLogin" id="textSenha"></small>
+                    
                 </div>
                 
                 <div class="componentesC">
                     <i class="fa-solid fa-lock"></i>
                     <input class="estilo_input" type="password" name="confsenha" id="confsenha" placeholder="Confirmar Senha" required>
                     <i class="fa-solid fa-eye" id="eyes2" onclick="mostrarConfSenha()"></i>
-                    <small class="erroLogin" id="textSenhaConfirmar"></small>
+                    
                 </div>
-                <input type="submit" value="Acessar" id="bttEnviar">
-                <small class="erroLogin" id="textFom"></small>
+                <div class="btts">
+                    <input type="submit" value="Cadastra-se" id="bttEnviar">
+                    <a href="../html/login.html" >Voltar</a>
+                </div>
          </form>
+         <div class="erro">
+            <small id="textNome"></small>
+            <small id="textEmail"></small>
+            <small id="textSenha"></small>
+            <small id="textSenhaConfirmar"></small>
+        </div>
      </div>
     <div class="decoracao2"></div>
-    <script src="../javaScript/cadastro.js"></script>
+    <script src="../javaScript/script_cadastro.js"></script>
     <script src="../javaScript/script_eyes.js"></script>
 </body>
 </html>

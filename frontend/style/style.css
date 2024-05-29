@@ -57,14 +57,17 @@ body{
     background: #ffffff;
     transform: translate(-50%,-50%);
 }
-.login h2{
+.titulo{
     color:var(--cor-titulo);
+    text-shadow: 0px 3px 3px var(--cor-sombra-texto);
     margin-top:0;
     margin-bottom: 30px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins';
+    font-weight: bold;
     font-size:30px;
 }
 
+    
 .componentes{
     border:1px solid var(--cor-titulo);
     border-radius:5px;
@@ -186,7 +189,8 @@ body{
     border-radius:100%;
     transform:translate(-50%,-50%);
 }
-.erroLogin{
+
+.login .erro{
     display:block;
     margin: 0;
     color:red;
@@ -194,6 +198,28 @@ body{
     font-weight:bold;
     text-align: justify;
     width: 45%;
+}
+.cadastro .erro{
+    display:flex;
+    padding-top:10px;
+    margin: 0;
+    color:red;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight:bold;
+    text-align: justify;
+    width: 45%;
+}
+.esq_senha .erro{
+    display:flex;
+    padding-top:10px;
+    align-items: center;
+    justify-content: center;
+    text-align: justify;
+    margin: 0;
+    color:red;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight:bold;
+    width: 100%;
 }
 .cadastro{
     display:flex;
@@ -213,6 +239,7 @@ body{
 }
 .cadastro h2{
     color:var(--cor-titulo);
+    text-shadow: 0px 3px 3px var(--cor-sombra-texto);
     font-size:30px;
     margin-bottom: 0;
 }
@@ -253,27 +280,118 @@ body{
     color:var(--cor-titulo);
     font-size:14px;
 }
-.containerCadastro #bttEnviar{
+.containerCadastro .btts{
     display:flex;
+    flex-direction: row-reverse;
     position:absolute;
     justify-content: center;
     align-items: center;
     font-size: 16px;
     top:85%;
-    left:75%;
+    left:60%;
+    width: 300px;
+}
+.containerCadastro .btts #bttEnviar{
     background-image: linear-gradient(var(--cor-fundo), var(--cor-fundo2), var(--cor-fundo));
     color:var(--cor-texto);
     border:none;
     padding:10px;
     border-radius:5px;
+    font-size: 16px;
     width:170px;
+    margin-left: 5px;
+    margin-right:20px;
 }
-.containerCadastro #bttEnviar:hover{
+.containerCadastro .btts #bttEnviar:hover{
     background-image: linear-gradient(var(--cor-fundo2), var(--cor-fundo), var(--cor-fundo2));
     cursor:pointer;
     box-shadow: 0px 3px 1px var(--cor-sombra-texto);
     transition: .3s ease;
 }
+.containerCadastro .btts a{
+    background-image: linear-gradient(var(--cor-fundo), var(--cor-fundo2), var(--cor-fundo));
+    color:var(--cor-texto);
+    text-align: center;
+    text-decoration: none;
+    border:none;
+    padding:7px;
+    font-size:16px;
+    border-radius:5px;
+    width:170px;
+}
+.containerCadastro .btts a:hover{
+    background-image: linear-gradient(var(--cor-fundo2), var(--cor-fundo), var(--cor-fundo2));
+    cursor:pointer;
+    box-shadow: 0px 3px 1px var(--cor-sombra-texto);
+    transition: .3s ease;
+}
+.esq_senha{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    top:55%;
+    left:50%;
+    position:absolute;
+    width:500px;
+    height: 290px;
+    padding:25px 30px;
+    border-radius:15px;
+    border: 5px outset var(--cor-borda);
+    box-shadow: 0px 4px 0px var(--cor-fundo);
+    background: #ffffff;
+    transform: translate(-50%,-50%);
+}
+.esq_senha p{
+    text-shadow: 0px 5px 2px var(--cor-sombra-texto);
+    font-weight: lighter;
+    text-align: justify;
+    font-family:'Open Sans';
+    color:var(var(--cor-texto2));
+    margin-bottom: 30px;
+}
+.componentesEsqSenha{
+    position:relative;
+    width:20em;
+    border:1px solid var(--cor-titulo);
+    border-radius:5px;
+    padding:4px;
+}
+.componentesEsqSenha i{
+    color:var(--cor-icone);
+    font-size: 16px;
+}
+.componentesEsqSenha .estilo_input{
+    width: calc(90% - 16px);
+    border:none;
+    outline: none;
+    color:var(--cor-titulo);
+    font-size: 14px;
+}
+.componentesEsqSenha .estilo_input::placeholder{
+    color:var(--cor-titulo);
+    font-size:14px;
+}
+.esq_senha #bttEnviar{
+    position:relative;
+    top: 30%;
+    left: 50%;
+    background-image: linear-gradient(var(--cor-fundo), var(--cor-fundo2), var(--cor-fundo));
+    color:var(--cor-texto);
+    border:none;
+    padding:10px;
+    border-radius:5px;
+    font-size: 16px;
+    margin-top: 20px;
+    width: 150px;
+    transform: translate(-50%, -50%);
+}
+.esq_senha #bttEnviar:hover{
+    background-image: linear-gradient(var(--cor-fundo2), var(--cor-fundo), var(--cor-fundo2));
+    cursor:pointer;
+    box-shadow: 0px 3px 1px var(--cor-sombra-texto);
+    transition: .3s ease;
+}
+
 
 
 
