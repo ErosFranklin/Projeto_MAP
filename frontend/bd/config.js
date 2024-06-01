@@ -12,10 +12,12 @@ CREATE SCHEMA `sistemadecadastro` DEFAULT CHARACTER SET utf8mb4 ;
 CREATE TABLE `sistemadecadastro`.`usuarios` (
   `idusuario` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
-  `email` VARCHAR(45) NOT NULL,
-  `senha` VARCHAR(200) NOT NULL,
+  `email` VARCHAR(200) NOT NULL,
+  `senha` VARCHAR(45) NOT NULL,
   `formacao` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idusuarios`));
+  UNIQUE INDEX `idusuario_UNIQUE` (`idnew_table` ASC) VISIBLE,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
 
 3-
 

@@ -79,7 +79,7 @@ app.post("/cadastro", async (req, res) => {
       "INSERT INTO usuarios (nome, email, formacao, senha) VALUES (?, ?, ?, ?)",
       [nome, email, formacao, senha]
     );
-    res.status(201).json({ message: "Usuário cadastrado com sucesso!" });
+    res.redirect("/");
   } catch (error) {
     console.error("Erro ao cadastrar usuário:", error);
     res.status(500).json({ error: "Erro ao cadastrar usuário" });
