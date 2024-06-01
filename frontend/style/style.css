@@ -40,6 +40,8 @@ body{
     filter:drop-shadow(0px 4px 0px var(--cor-fundo));
     transform: translateX(-50%);
 }
+
+
 .login{
     display:flex;
     flex-direction: column;
@@ -391,7 +393,77 @@ body{
     box-shadow: 0px 3px 1px var(--cor-sombra-texto);
     transition: .3s ease;
 }
+.Microarea{
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to top, var(--cor-texto), var(--cor-fundo2));
+    overflow: hidden;
+}
+.menuLateral{
+    width: 70px;
+    height: 100%;
+    padding:30px 0 30px 1%;
+    background-color: var(--cor-fundo);
+    box-shadow: 5px 0 0 var(--cor-fundo2);
+    position:fixed;
+    top:0;
+    left:0;
+    transition: .5s;
+    z-index: 1;
+}
 
+.menuLateral.expandir{
+    width: 300px;
+}
+.btn-expandir{
+    width: 100%;
+    padding-left:10px
+}
+.btn-expandir i{
+    color:#fff;
+    font-size: 26px;
+    cursor:pointer;
+}
+.menulateral ul{
+    height: 100%;
+}
+.menuLateral .item-menu{
+    margin-top: 10px;
+    list-style:none;
+    
+}
+.item-menu a{
+    display:flex;
+    margin-left:-29px;
+    color:#ffffff;
+    font-size: 16px;
+    padding:10px 4%;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.item-menu a:hover{
+    border-radius: 5px;
+    margin-right: 5px;
+    background:#fff;
+    color:var(--cor-fundo);
+    transition: .35s;
+}
+.item-menu .icone{
+    font-size: 24px;
+    margin:15px 0px;
+}
+.item-menu .txt-link{
+    margin-left: 77px;
+    font-size: 20px;
+    transition: .18s;
+    opacity: 0;
+    transform: translateY(18px);
+}
+.menuLateral.expandir .txt-link{
+    margin-left: 40px;
+    opacity: 1;
+}
 
 
 

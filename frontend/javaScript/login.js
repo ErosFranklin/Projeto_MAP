@@ -6,7 +6,7 @@ let textEmail = document.getElementById("textEmail");
 let textPassword = document.getElementById("textSenha");
 
 form.addEventListener("submit", (e) => {
-  if (email.value == "" && password.value == "") {
+  if (email.value == "" || password.value == "") {
     textForm.textContent = "Você precisa preencher todos os campos!";
   } else if (
     validatorEmail(email.value) === true &&

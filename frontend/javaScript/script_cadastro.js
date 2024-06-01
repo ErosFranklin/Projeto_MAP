@@ -10,7 +10,7 @@ let textConfSenha = document.getElementById("textSenhaConfirmar");
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-  if (nome.value == "" && email.value == "" && formacao.value == "" && password.value == "" && conf_password == "") {
+  if (nome.value == "" || email.value == "" || formacao.value == "" || password.value == "" || conf_password == "") {
     textForm.textContent = "Você precisa preencher todos os campos!";
   } else if (
     validarEmail(email.value) &&
@@ -22,11 +22,12 @@ form.addEventListener("submit", (e) => {
     textForm.textContent = "";
     textEmail.textContent = "";
     textPassword.textContent = "";
+    window.location.href= "../html/microarea.html";
+    
   } else {
     console.log("Requisição não atendida");
   }
 
- 
 });
 
 email.addEventListener("keyup", () => {
