@@ -1,0 +1,148 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const novaMicroarea = document.querySelector('#novaMicroarea');
+    const overlay = document.querySelector('#overlay');
+    const modal = document.querySelector('#modal');
+    const microareaContainer = document.getElementById('microarea-container');
+    const nomeMicroareaInput = document.querySelector('#nomeMicroarea');
+    const quantPessoasInput = document.querySelector('#quantPessoas');
+    const botaoFechar = document.querySelector('#fechar');
+
+    const modalExibido = localStorage.getItem('modalExibido');
+    if (modalExibido === 'true') {
+        overlay.style.display = 'block';
+        modal.style.display = 'block';
+    }
+    novaMicroarea.addEventListener('click', function() {
+        overlay.style.display = 'block';
+        modal.style.display = 'block';
+        localStorage.setItem('modalExibido','true')
+    });
+
+    botaoFechar.addEventListener('click', function() {
+        fecharJanela(overlay, modal, nomeMicroareaInput, quantPessoasInput);
+    });
+    
+    document.querySelector('#criarMicroarea').addEventListener('click', function() {
+        const nomeMicroarea = nomeMicroareaInput.value;
+        const quantPessoas = quantPessoasInput.value;
+
+        if (verificarMicroarea(nomeMicroarea, quantPessoas)) {
+            alert("Área Existente!");
+            return;
+        } else if (nomeMicroarea === "" || quantPessoas === "") {
+            alert("Preencha todas as informações!");
+            return;
+        }
+
+        const novaMicroarea = criarMicroarea(nomeMicroarea, quantPessoas);
+        microareaContainer.appendChild(novaMicroarea);
+
+        fecharJanela(overlay, modal, nomeMicroareaInput, quantPessoasInput);
+    });
+
+    botaoFechar.addEventListener('click', function() {
+        fecharJanela(overlay, modal, nomeMicroareaInput, quantPessoasInput);
+    });
+});
+
+function criarMicroarea(endereco, quantPessoas) {
+    const novaMicroarea = document.createElement('div');
+    novaMicroarea.className = 'area';
+    novaMicroarea.innerHTML = '<h2><a href="#">' + endereco + '</a></h2><p> Pessoas Cadastradas:' + quantPessoas + '</p>';
+
+    const editar = document.createElement('button');
+    editar.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
+    editar.className = 'editar';
+    editar.addEventListener('click', function() {   
+        editarMicroarea(novaMicroarea);
+    });
+    novaMicroarea.appendChild(editar);
+
+    const apagar = document.createElement('button');
+    apagar.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+    apagar.className = 'apagar';
+    apagar.addEventListener('click', function() { 
+        novaMicroarea.remove();
+    });
+    novaMicroarea.appendChild(apagar);
+
+    return novaMicroarea;
+}
+
+function fecharJanela(overlay, modal, nomeMicroareaInput, quantPessoasInput) {
+    nomeMicroareaInput.value = "";
+    quantPessoasInput.value = "";
+    overlay.style.display = 'none';
+    modal.style.display = 'none';
+    localStorage.setItem('modalExibido', 'false');
+}
+
+function verificarMicroarea(nomeMicroarea, quantPessoas) {
+    var microareas = document.querySelectorAll('.area');
+
+    for (var i = 0; i < microareas.length; i++) {
+        var area = microareas[i];
+        var nome = area.querySelector('a').innerText.trim();
+        var horario = area.querySelector('p').innerText.trim();
+
+        if (nome === nomeMicroarea.trim() && horario === quantPessoas.trim()) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function editarMicroarea(area) {
+    const editar = area.querySelector('.editar');
+    editar.remove();
+
+    const a = area.querySelector('a');
+    const p = area.querySelector('p');
+
+    const inputNome = document.createElement('input');
+    inputNome.type = 'text';
+    inputNome.value = a.textContent;
+
+    const inputQuantPessoas = document.createElement('input');
+    inputQuantPessoas.type = 'text';
+    inputQuantPessoas.value = p.textContent;
+
+    a.classList.add('editaM');
+    p.classList.add('editaM');
+    
+    a.innerHTML = '';
+    a.appendChild(inputNome);
+
+    p.innerHTML = '';
+    p.appendChild(inputQuantPessoas);
+    
+    const salvar = document.createElement('button');
+    salvar.innerHTML = '<i class="fa-solid fa-floppy-disk"></i>';
+    salvar.className = 'salvar';
+    salvar.classList.add('editarMicroarea');
+    salvar.addEventListener('click', function() {
+        const novoNome = inputNome.value.trim();
+        const novaQuantPessoas = inputQuantPessoas.value.trim();
+
+        if (novoNome === '' || novaQuantPessoas === '') {
+            alert('Por favor, preencha todos os campos.');
+            return;
+        }
+
+        if (novoNome !== a.textContent || novaQuantPessoas !== p.textContent) {
+            if (verificarMicroarea(novoNome, novaQuantPessoas)) {
+                alert('Já existe um grupo com esse nome e período.');
+                return;
+            }
+
+            a.textContent = novoNome;
+            p.textContent = novaQuantPessoas;
+        }
+        
+        inputNome.remove();
+        inputQuantPessoas.remove();
+        salvar.remove();
+        area.appendChild(editar);
+    });
+    area.appendChild(salvar);
+}

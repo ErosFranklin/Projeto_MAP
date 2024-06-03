@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body class="Microarea">
-        <nav class="menuLateral">
+    <nav class="menuLateral">
         <div class="btn-expandir">
             <i class="fa-solid fa-bars" id="btnExpandir"></i>
         </div>
@@ -33,6 +33,36 @@
             </li>
         </ul>
     </nav>
+    <main>
+        <span class="titleMicroarea">
+            <h2>Microarea</h2>
+        </span>
+        
+        <div class="btnNovaMicroarea">
+            <button id="novaMicroarea">Nova Microarea</button>
+        </div>
+        
+        <div id="overlay" class="overlay"></div>
+        <div id="modal" class="modal">
+            <h2>Cadastrar Microarea</h2>
+            <label for="nomeMicroarea">Endereco</label>
+            <div class="componentesM">
+                <i class="bi bi-people-fill"></i><input type="text" name="nomeMicroarea" id="nomeMicroarea" placeholder="Endereco" required>
+            </div>
+            <label for="quantPessoas">Quantidade de Pessoas, ex:10</label>
+            <div class="componentesM">
+                <i class="bi bi-calendar-week-fill"></i><input type="text" name="quantPessoas" id="quantPessoas" placeholder="ex:10" required>
+            </div>
+            <div class="btnsMicroarea">
+                <button id="criarMicroarea">Criar</button>
+                <button id="fechar">Fechar</button>
+            </div>
+        </div>
+        <div id="microarea-container" class="microarea-container">
+            
+        </div>
+    </main>
+    <script src="../public/javaScript/addMicroarea"></script>
     <script src="../public/javaScript/menuLateral.js"></script>
 </body>
 </html>

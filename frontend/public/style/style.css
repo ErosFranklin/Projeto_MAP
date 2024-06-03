@@ -411,7 +411,9 @@ body{
     transition: .5s;
     z-index: 1;
 }
-
+.Microarea.expandir{
+    backdrop-filter: blur(10px);
+}
 .menuLateral.expandir{
     width: 300px;
 }
@@ -463,6 +465,238 @@ body{
 .menuLateral.expandir .txt-link{
     margin-left: 40px;
     opacity: 1;
+}
+.microarea-container {
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 10px;
+    position: relative;
+    margin:100px;
+}
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 2;
+}
+
+.area {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    position:relative;
+    justify-content: space-between;
+    width: 100%;
+    height: 15em;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: var(--cor-fundo);
+    margin: 10px;
+}
+.area h2 a{
+    text-decoration: none;
+    color: #fff;
+    text-shadow: 2px 2px 5px var(--cor-sombra-texto);
+}
+.area h2 a:hover{
+    text-decoration: none;
+    color: var(--cor-titulo);
+}
+.area input{
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+}
+.area p{
+    font-size:0.8em;
+    color: #fff;
+}
+.area .editarMicroarea{
+    display: flex;
+    justify-content: flex-start; 
+    align-items:flex-start; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    padding:5px;
+}
+.editar{
+    position: relative;
+    background-color: transparent;
+    color:#ffffff;
+    border-style:none;
+    font-size: 1.2em;
+    top:1%;
+    left:45%;
+    cursor:pointer;
+}
+.editar:hover{
+    color: var(--cor-fundo2);
+    transition: .3s;
+}
+.apagar{
+    position: relative;
+    background-color: transparent;
+    color:#ffffff;
+    top:16%;
+    left:40%;
+    border-style:none;
+    margin-right: 50px;
+    font-size: 1.2em;
+    cursor:pointer;
+}
+.apagar:hover{
+    color: var(--cor-fundo2);
+    transition: .3s;
+}
+.editaM{
+    display:flex;
+    flex-direction: column;
+    font-size: 1em;
+}
+.editaM input{
+    background-color: var(--cor-5);
+    color:#fff;
+    font-size: 1em;
+    width: 50%;
+    padding-left:5px;
+    border-style:none;
+    border-radius:5px;
+    outline: none;
+}
+
+.salvar{
+    background-color: transparent;
+    color:#ffffff;
+    border-style:none;
+    font-size: 1.2em;
+    margin-right: 10px;
+    cursor:pointer;
+}
+.salvar:hover{
+    color: var(--cor-titulo);
+    transition: .3s;
+}
+
+.btnNovaMicroarea{
+    display: flex;
+    top:5%;
+    right: 2%;
+    position:fixed;
+}
+.titleMicroarea h2{
+    display:flex;
+    font-size: 2em;
+    left:8%;
+    top:2%;
+    position:fixed;
+}
+#novaMicroarea{
+    padding: 10px;
+    border-style:none;
+    border-radius:5px;
+    font-size: 1em;
+    background-color: var(--cor-fundo);
+    text-align: center;
+    color:#fff;
+    cursor:pointer;
+}
+#novaMicroarea:hover{
+    background-color: var(--cor-fundo2);
+    transition: .3s;
+}
+
+.modal{
+    display:none;
+    text-align: center;
+    grid-column: auto;
+    width: 30%;
+    border-radius: 10px;
+    border:1px solid var(--cor-borda);
+    padding:40px;
+    transition: .2s ;
+}
+.modal h2{
+    color:var(--cor-titulo);
+    font-size:1.7em;
+}
+.modal label{
+    display:flex;
+    margin: 10px;
+    text-align: left;
+    
+}
+.modal .componentesM{
+    display:flex;
+    align-items: center;
+    padding-left:10px;
+    margin: 10px;
+    width: 95%;
+    height: auto;
+    margin-top:10px;
+    background-color: #ffffff;
+    border:1px solid var(--cor-borda);
+    border-radius:10px;
+}
+.componentesM input{
+    position:relative;
+    border: 2px solid transparent;
+    background-color: #b7daf800;
+    padding: 10px;
+    width: calc(100% - 30px);
+    outline: none;
+    transition: 0.3s;
+}
+.componentesM input:focus{
+    border-color: #02305900;
+    color:var(--cor-borda);
+}
+.componentesM i{
+    font-size:1.2em;
+}
+
+#criarMicroarea{
+    background-color: var(--cor-fundo);
+    border-style: none;
+    border-radius: 5px;
+    width: 100px;
+    color:#fff;
+    padding: 5px;
+    cursor:pointer;
+    transition: .3s;
+}
+#criarMicroarea:hover{
+    background-color: var(--cor-fundo2);
+}
+#fechar{
+    background-color: var(--cor-fundo);
+    border-style: none;
+    border-radius: 5px;
+    width: 100px;
+    color:#fff;
+    padding: 5px;
+    cursor:pointer;
+    transition: .3s;
+}
+#fechar:hover{
+    background-color: var(--cor-fundo2);
 }
 
 
