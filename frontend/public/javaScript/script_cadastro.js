@@ -3,27 +3,31 @@ let email = document.getElementById("email");
 let formacao = document.getElementById("formacao");
 let password = document.getElementById("senha");
 let conf_password = document.getElementById("confsenha");
+let numero = document.getElementById("numero");
 let form = document.querySelector("form");
 let textEmail = document.getElementById("textEmail");
 let textPassword = document.getElementById("textSenha");
 let textConfSenha = document.getElementById("textSenhaConfirmar");
 let textForm = document.getElementById("textForm");
+let textNumero = document.getElementById("textNumero");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   if (
     nome.value === "" || email.value === "" || formacao.value === "" || 
-    password.value === "" || conf_password.value === ""
+    password.value === "" || conf_password.value === "" || numero.value === ""
   ) {
     textForm.textContent = "Você precisa preencher todos os campos!";
   } else if (
     validarEmail(email.value) && 
     validarPassword(password.value) && 
-    validarSenhas(password.value, conf_password.value)
+    validarSenhas(password.value, conf_password.value) &&
+    validarNumero(numero.value)
   ) {
     textEmail.textContent = "";
     textPassword.textContent = "";
+    textNumero.textContent = "";
 
     // Construir o objeto com os dados do usuário
     const usuario = {
@@ -82,6 +86,14 @@ conf_password.addEventListener("keyup", () => {
   }
 });
 
+numero.addEventListener("keyup", () => {
+  if (!validarNumero(numero.value)) {
+    textNumero.textContent = "Número inválido, o numero deve conter 11 digitos!!";
+  } else {
+    textNumero.textContent = "";
+  }
+});
+
 function validarEmail(email) {
   let emailPattern = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
   return emailPattern.test(email);
@@ -94,4 +106,9 @@ function validarPassword(password) {
 
 function validarSenhas(password, conf_password) {
   return password === conf_password;
+}
+
+function validarNumero(numero) {
+  let numeroPattern = /^[0-9]{11}$/; 
+  return numeroPattern.test(numero);
 }
