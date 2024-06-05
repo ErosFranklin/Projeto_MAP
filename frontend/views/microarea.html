@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../public/style/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/uuid@latest/dist/umd/uuidv4.min.js"></script>
 </head>
 <body class="Microarea">
     <nav class="menuLateral">
@@ -20,7 +21,7 @@
                 </a>
             </li>
             <li class="item-menu">
-                <a href="#">
+                <a href="../views/microarea.html">
                     <span class="icone"><i class="fa-solid fa-location-dot"></i></span>
                     <span class="txt-link">Microarea</span>
                 </a>
@@ -42,26 +43,28 @@
             <button id="novaMicroarea">Nova Microarea</button>
         </div>
         
-        <div id="overlay" class="overlay"></div>
-        <div id="modal" class="modal">
-            <h2>Cadastrar Microarea</h2>
-            <label for="nomeMicroarea">Endereco</label>
-            <div class="componentesM">
-                <i class="fa-solid fa-location-dot"></i><input type="text" name="nomeMicroarea" id="nomeMicroarea" placeholder="Endereco" required>
-            </div>
-            <label for="quantPessoas">Quantidade de Pessoas, ex:10</label>
-            <div class="componentesM">
-                <i class="fa-solid fa-people-group"></i><input type="text" name="quantPessoas" id="quantPessoas" placeholder="ex:10" required>
-            </div>
-            <div class="btnsMicroarea">
-                <button id="criarMicroarea">Criar</button>
-                <button id="fechar">Fechar</button>
+        <div id="overlay" class="overlay">
+            <div id="modal" class="modal">
+                <h2>Cadastrar Microarea</h2>
+                <label for="nomeMicroarea">Bairro</label>
+                <div class="componentesM">
+                    <i class="fa-solid fa-location-dot"></i><input type="text" name="nomeMicroarea" id="nomeMicroarea" placeholder="Endereco" required>
+                </div>
+                <label for="quantPessoas">Quantidade de Pessoas, ex:10</label>
+                <div class="componentesM">
+                    <i class="fa-solid fa-people-group"></i><input type="text" name="quantPessoas" id="quantPessoas" placeholder="ex:10" required>
+                </div>
+                <div class="btnsMicroarea">
+                    <button id="criarMicroarea">Criar</button>
+                    <button id="fechar">Fechar</button>
+                </div>
             </div>
         </div>
         <div id="microarea-container" class="microarea-container">
             
         </div>
     </main>
+    
     <script src="../public/javaScript/addMicroarea"></script>
     <script src="../public/javaScript/menuLateral.js"></script>
 </body>

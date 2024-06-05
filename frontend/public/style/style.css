@@ -571,6 +571,22 @@ body{
     color: var(--cor-fundo2);
     transition: .3s;
 }
+.detalhes{
+    position: absolute;
+    background-color: transparent;
+    color:#ffffff;
+    bottom:0;
+    left:0;
+    width: 30px;
+    border-style:none;
+    margin:8px;
+    font-size: 1.2em;
+    cursor:pointer;
+}
+.detalhes:hover{
+    color: var(--cor-fundo2);
+    transition: .3s;
+}
 .editaM{
     display:flex;
     flex-direction: column;
