@@ -48,37 +48,38 @@
             <h3>Informacoes do Agente</h3>
         </span>
         <div class="dados-basicos">
-            
-            <div class="componentes-basicos">
-                <div class="informacao">
-                    <label for="">Nome:</label>
-                    <h3><%= usuario.nome %></h3>
+            <% usuario.forEach(function(usuario) { %>
+                <div class="componentes-basicos">
+                    <div class="informacao">
+                        <label for="">Nome:</label>
+                        <h3><%= usuario.nome %></h3>
+                    </div>
                 </div>
-            </div>
-            <div class="componentes-basicos">
-                <div class="informacao">
-                    <label for="">Telefone:</label>
-                    <h3><%= usuario.telefone %></h3>
+                <div class="componentes-basicos">
+                    <div class="informacao">
+                        <label for="">Telefone:</label>
+                        <h3><%= usuario.telefone %></h3>
+                    </div>
                 </div>
-            </div>
-            <div class="componentes-basicos">
-                <div class="informacao">
-                    <label for="">Senha:</label>
-                    <h3><%= usuario.senha %></h3>
+                <div class="componentes-basicos">
+                    <div class="informacao">
+                        <label for="">Senha:</label>
+                        <h3><%= usuario.senha %></h3>
+                    </div>
                 </div>
-            </div>
-            <div class="componentes-basicos">
-                <div class="informacao">
-                    <label for="">Email:</label>
-                    <h3><%= usuario.email %></h3>
+                <div class="componentes-basicos">
+                    <div class="informacao">
+                        <label for="">Email:</label>
+                        <h3><%= usuario.email %></h3>
+                    </div>
                 </div>
-            </div>
-            <div class="componentes-basicos">
-                <div class="informacao">
-                    <label for="">Email:</label>
-                    <h3><%= usuario.formacao %></h3>
+                <div class="componentes-basicos">
+                    <div class="informacao">
+                        <label for="">Formação:</label>
+                        <h3><%= usuario.formacao %></h3>
+                    </div>
                 </div>
-            </div>
+            <% }); %>
         </div>
         <span class="titulo-dados-polo">
             <h3>Informacoes do Polo USF</h3>
