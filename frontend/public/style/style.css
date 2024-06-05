@@ -739,7 +739,7 @@ body{
 .conta{
     background-image: linear-gradient(to top,#fff, #fff);
     overflow: auto;
-    height:120vh;
+    height:130vh;
 }
 .title-conta h2{
     display:flex;
@@ -760,7 +760,7 @@ body{
 .titulo-dados-polo{
     display:flex;
     position:absolute;
-    top:50%;
+    top:63%;
     left:8%;
     color:var(--cor-texto2);
     font-style: italic;
@@ -814,7 +814,7 @@ body{
     position:absolute;
     width: 89%;
     height: auto;
-    top:58%;
+    top:70%;
     left:8%;
     background: transparent;
     border: 2px solid var(--cor-borda);

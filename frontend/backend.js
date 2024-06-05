@@ -85,7 +85,16 @@ app.post("/cadastro", async (req, res) => {
     res.status(500).json({ error: "Erro ao cadastrar usuário" });
   }
 });
-
+// Rota para receber informacoes dos agentes
+app.get("/usuarios", async (req, res) => {
+  try {
+    const [rows] = await pool.query("SELECT * FROM usuarios");
+    res.render("conta.html", { usuarios: rows });
+  } catch (error) {
+    console.error("Erro ao obter usuários:", error);
+    res.status(500).json({ error: "Erro ao obter usuários" });
+  }
+});
 // Iniciar o servidor
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
