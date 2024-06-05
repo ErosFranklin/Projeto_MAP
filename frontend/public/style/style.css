@@ -33,7 +33,7 @@ body{
 }
 .imagemPrincipalCadastro img{
     display:flex;
-    top:-5%;
+    top:-9%;
     left:50%;
     position:absolute;
     max-width:600px;
@@ -205,8 +205,9 @@ body{
 }
 .cadastro .erro{
     display:flex;
-    padding-top:10px;
-    margin: 0;
+    position:relative;
+    left:-26%;
+    padding-top:20px;
     color:red;
     font-family:Arial, Helvetica, sans-serif;
     font-weight:bold;
@@ -233,7 +234,7 @@ body{
     left:50%;
     position:absolute;
     width:700px;
-    height: 400px;
+    height: auto;
     padding:25px 30px;
     border-radius:15px;
     border: 5px outset var(--cor-borda);

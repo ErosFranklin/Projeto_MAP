@@ -1,40 +1,56 @@
-let nome = document.getElementById("nome");
-let email = document.getElementById("email");
 let formacao = document.getElementById("formacao");
 let password = document.getElementById("senha");
 let conf_password = document.getElementById("confsenha");
 let numero = document.getElementById("numero");
+let data_contratacao = document.getElementById("data_contratacao");
+let cpf = document.getElementById("cpf");
+let rg = document.getElementById("rg");
 let form = document.querySelector("form");
 let textEmail = document.getElementById("textEmail");
 let textPassword = document.getElementById("textSenha");
 let textConfSenha = document.getElementById("textSenhaConfirmar");
 let textForm = document.getElementById("textForm");
 let textNumero = document.getElementById("textNumero");
+let textDataContratacao = document.getElementById("textDataContratacao");
+let textCPF = document.getElementById("textCPF");
+let textRG = document.getElementById("textRG");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   if (
     nome.value === "" || email.value === "" || formacao.value === "" || 
-    password.value === "" || conf_password.value === "" || numero.value === ""
+    password.value === "" || conf_password.value === "" || numero.value === "" || data_contratacao.value === "" ||
+    cpf.value === "" || rg.value === ""
   ) {
     textForm.textContent = "Você precisa preencher todos os campos!";
   } else if (
     validarEmail(email.value) && 
     validarPassword(password.value) && 
     validarSenhas(password.value, conf_password.value) &&
-    validarNumero(numero.value)
+    validarNumero(numero.value) &&
+    validarCPF(cpf.value) &&
+    validarRG(rg.value) 
   ) {
     textEmail.textContent = "";
     textPassword.textContent = "";
+    textConfSenha.textContent = "";
     textNumero.textContent = "";
+    textDataContratacao.textContent = "";
+    textCPF.textContent = "";
+    textRG.textContent = "";
 
     // Construir o objeto com os dados do usuário
     const usuario = {
       nome: nome.value,
       email: email.value,
       formacao: formacao.value,
-      senha: password.value
+      senha: password.value,
+      conf_password: conf_password.value,
+      numero: numero.value,
+      data_contratacao: data_contratacao.value,
+      cpf: cpf.value,
+      rg: rg.value
     };
 
     // Enviar os dados para o servidor
@@ -88,9 +104,25 @@ conf_password.addEventListener("keyup", () => {
 
 numero.addEventListener("keyup", () => {
   if (!validarNumero(numero.value)) {
-    textNumero.textContent = "Número inválido, o numero deve conter 11 digitos!!";
+    textNumero.textContent = "*Número inválido, o numero deve conter 11 digitos!!";
   } else {
     textNumero.textContent = "";
+  }
+});
+
+cpf.addEventListener("keyup", () => {
+  if (!validarCPF(cpf.value)) {
+    textCPF.textContent = "*Número de CPF inválido";
+  } else {
+    textCPF.textContent = "";
+  }
+});
+
+rg.addEventListener("keyup", () => {
+  if (!validarRG(rg.value)) {
+    textRG.textContent = "*Número de RG inválido";
+  } else {
+    textRG.textContent = "";
   }
 });
 
@@ -111,4 +143,14 @@ function validarSenhas(password, conf_password) {
 function validarNumero(numero) {
   let numeroPattern = /^[0-9]{11}$/; 
   return numeroPattern.test(numero);
+}
+
+function validarCPF(cpf) {
+  let cpfPattern = /^[0-9]{11}$/;
+  return cpfPattern.test(cpf);
+}
+
+function validarRG(rg) {
+  let rgPattern = /^[0-9]{7,9}$/;
+  return rgPattern.test(rg);
 }
