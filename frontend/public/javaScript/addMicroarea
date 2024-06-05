@@ -45,10 +45,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function criarMicroarea(endereco, quantPessoas) {
+function criarMicroarea(endereco, quantPessoas, id) {
     const novaMicroarea = document.createElement('div');
     novaMicroarea.className = 'area';
-    novaMicroarea.innerHTML = '<h2><a href="#">' + endereco + '</a></h2><p> Pessoas Cadastradas:' + quantPessoas + '</p>';
+    novaMicroarea.innerHTML = `<h2><a href="detalhesMicroarea.html?id=${id}">${endereco}</a></h2><p>Pessoas Cadastradas: ${quantPessoas}</p>`;
 
     const editar = document.createElement('button');
     editar.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
