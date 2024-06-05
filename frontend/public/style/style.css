@@ -11,6 +11,7 @@
     --cor-texto2: #005eff;
     --cor-titulo: #2f4f86;
     --cor-sombra-texto: #395fa18d;
+    --cor-rodape:#253f6b83;
 }
 body{
     font-family: 'Poppins', 'Open Sans';
@@ -22,7 +23,7 @@ body{
 }
 .imagemPrincipal img{
     display:flex;
-    top:0;
+    top:-8%;
     left:50%;
     position:absolute;
     max-width:600px;
@@ -47,7 +48,7 @@ body{
     flex-direction: column;
     align-items: left;
     justify-content:flex-start;
-    top:60%;
+    top:54%;
     left:50%;
     position:absolute;
     width:700px;
@@ -118,6 +119,7 @@ body{
     position:fixed;
     text-align: center;
     font-size:'Open Sans';
+    color:var(--cor-texto2);
     font-size: 14px;
     top:90%;
     left:16%;
@@ -126,7 +128,6 @@ body{
 }
 .bttEsquecerSenha a:hover{
     text-shadow: 0px 1px 1px var(--cor-sombra-texto);
-    color: var(--c);
 }
 .bem-vindo{
     display:flex;
@@ -134,7 +135,7 @@ body{
     justify-content: space-around;
     text-align: center;
     left:51.5%;
-    top:59.98%;
+    top:53.98%;
     position:absolute;
     color:var(--cor-texto);
     padding:30px;
@@ -167,6 +168,7 @@ body{
     font-weight: bold;
     transition: .3s ease;
 }
+
 .decoracao{
     display:flex;
     position:absolute;
@@ -511,14 +513,10 @@ body{
     box-shadow: 2px 3px 1px var(--cor-sombra-texto);
     margin: 10px;
 }
-.area h2 a{
+.area h2 span{
     text-decoration: none;
     color: #fff;
     text-shadow: 2px 2px 5px var(--cor-sombra-texto);
-}
-.area h2 a:hover{
-    text-decoration: none;
-    color: var(--cor-titulo);
 }
 .area input{
     display:flex;
@@ -738,5 +736,116 @@ body{
     background-color: var(--cor-fundo2);
 }
 
+.conta{
+    background-image: linear-gradient(to top,#fff, #fff);
+    overflow: auto;
+    height:120vh;
+}
+.title-conta h2{
+    display:flex;
+    font-size: 2em;
+    left:8%;
+    top:2%;
+    color:var(--cor-titulo);
+    position:absolute;
+}
+.titulo-dados-basicos{
+    display:flex;
+    position:absolute;
+    top:12%;
+    left:8%;
+    color:var(--cor-texto2);
+    font-style: italic;
+}
+.titulo-dados-polo{
+    display:flex;
+    position:absolute;
+    top:50%;
+    left:8%;
+    color:var(--cor-texto2);
+    font-style: italic;
+}
+.dados-basicos{
+    display:flex;
+    flex-wrap: wrap;
+    position:absolute;
+    width: 89%;
+    height: auto;
+    top:19%;
+    left:8%;
+    background: transparent;
+    border: 2px solid var(--cor-borda);
+    border-radius:10px;
+    padding:10px;
+}
+.componentes-basicos{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 10px;
+}
+.informacao{
+    display:flex;
+    flex-direction: column;
+    position: relative;
+    width: 300px;
+    height: 100px;
+}
+.informacao label{
+    color:var(--cor-titulo);
+    font-weight: bold;
+    font-size:18px;
+}
+.informacao h3{
+    width: 300px;
+    height:auto;
+    padding:10px;
+    padding-left:10px; 
+    color:var(--cor-titulo);
+    border:1px solid var(--cor-borda);
+    font-weight: lighter;
+    font-size:16px;
+    border-radius:10px;
+
+
+}
+.poloUSF{
+    display:flex;
+    flex-wrap: wrap;
+    position:absolute;
+    width: 89%;
+    height: auto;
+    top:58%;
+    left:8%;
+    background: transparent;
+    border: 2px solid var(--cor-borda);
+    border-radius:10px;
+    padding:10px;
+}
+.componentes-Polo{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 10px;
+}
+
+.rodape{
+    bottom:0;
+    position:absolute;
+    background-color: var(--cor-rodape);
+    color:var(--cor-texto);
+    width: 100vw;
+    text-align: center;
+    padding:5px;
+    text-shadow: 0px 2px 1px var(--cor-sombra-texto);
+}
+.rodape a{
+    text-decoration: none;
+    font-size: 16px;
+    color:var(--cor-texto);
+    text-shadow: 0px 1px 1px var(--cor-sombra-texto);
+}
+.rodape a:hover{
+    color:#ffffff78;
+    transition: .3s ease-in-out;
+}
 
 
