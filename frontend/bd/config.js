@@ -33,8 +33,8 @@ require("dotenv").config();
 const pool = mysql.createPool({
   host: "localhost",
   user: "root",
-  password: "16140112",
-  database: "sistemadecadastro",
+  password: "eros1401",
+  database: "smaas",
 });
 
 //Exportamos para que nosso arquivo backend.js consiga acessa-lo:
