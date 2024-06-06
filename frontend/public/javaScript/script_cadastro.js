@@ -67,7 +67,7 @@ form.addEventListener("submit", async (e) => {
       }
 
       // Redirecionar para a tela de login
-      window.location.href = "/login.html";
+      window.location.href = "/views/login.html";
     } catch (error) {
       console.error('Erro:', error);
       textForm.textContent = "Erro ao cadastrar usuário!";
