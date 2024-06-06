@@ -62,7 +62,7 @@ email.addEventListener("keyup", () => {
 password.addEventListener("keyup", () => {
   if (validatorPassword(password.value) !== true) {
     textPassword.textContent =
-      "*Senha deve conter: Minino 6 caracteres, 1 letra maiuscula, 1 letra minuscula, 1 numero e 1 caractere especial.";
+      "*Senha deve conter: Minino 6 caracteres, 1 letra maiuscula ou minuscula, 1 numero.";
   } else {
     textPassword.textContent = "";
   }
@@ -75,7 +75,6 @@ function validatorEmail(email) {
 }
 
 function validatorPassword(password) {
-  let passwordPattern =
-    /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+  let passwordPattern =/^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{6,16}$/;
   return passwordPattern.test(password);
 }

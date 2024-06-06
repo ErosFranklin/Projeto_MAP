@@ -46,7 +46,6 @@ form.addEventListener("submit", async (e) => {
       email: email.value,
       formacao: formacao.value,
       senha: password.value,
-      conf_password: conf_password.value,
       numero: numero.value,
       data_contratacao: data_contratacao.value,
       cpf: cpf.value,
@@ -88,9 +87,14 @@ email.addEventListener("keyup", () => {
 
 password.addEventListener("keyup", () => {
   if (!validarPassword(password.value)) {
-    textPassword.textContent = "*Senha deve conter: Minino 6 caracteres, 1 letra maiuscula, 1 letra minuscula, 1 numero e 1 caractere especial.";
+    textPassword.textContent = "*Senha deve conter: Minino 6 caracteres, 1 letra maiuscula ou minuscula, 1 numero.";
   } else {
     textPassword.textContent = "";
+  }
+  if (!validarSenhas(password.value, conf_password.value)) {
+    textConfSenha.textContent = "* As senhas são diferentes, por favor digite novamente.";
+  } else {
+    textConfSenha.textContent = "";
   }
 });
 
@@ -132,7 +136,7 @@ function validarEmail(email) {
 }
 
 function validarPassword(password) {
-  let passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+  let passwordPattern = /^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]{6,16}$/;
   return passwordPattern.test(password);
 }
 

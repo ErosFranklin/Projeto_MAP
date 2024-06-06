@@ -205,7 +205,7 @@ body{
 .cadastro .erro{
     display:flex;
     position:relative;
-    left:-26%;
+    right: 188px;
     padding-top:20px;
     color:red;
     font-family:Arial, Helvetica, sans-serif;
