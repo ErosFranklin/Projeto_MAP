@@ -6,11 +6,11 @@ require("dotenv").config();
 const app = express();
 const port = 8000;
 const path = require("path");
+const session = require("express-session");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-
 
 app.use(express.static("public"));
 app.engine("html", require("ejs").renderFile);
@@ -18,14 +18,35 @@ app.set("view engine", "html");
 app.use("/public", express.static(path.join(__dirname, "public")));
 app.set("views", path.join(__dirname, "/views"));
 
-// Rota para a página de login
+// Configuração de sessão
+app.use(session({
+  secret: 'hnouihwaiubkniurgiqobvdibaiurbily7s57sfvrv545sdv',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } //como não estamos usando https é false
+}));
+
+// Rotas para a página de login
 app.get("/", (req, res) => {
   res.render("login.html");
 });
 
-app.get("/login.html", (req, res) => {
-    res.render("login.html");
-  });
+app.get("/views/login.html", (req, res) => {
+  res.render("login.html");
+});
+
+//rota para a página de microarea(homepage) depois de logar
+app.get("/views/microarea.html", (req,res) =>{
+  res.render("microarea.html");
+})
+
+app.get("/views/conta.html", (req, res) => {
+  if (req.session.user) {
+    res.render("conta.html", { usuario: req.session.user });
+  } else {
+    res.redirect("/views/login.html");
+  }
+});
 
 // Rota de login
 app.post("/login", async (req, res) => {
@@ -44,7 +65,8 @@ app.post("/login", async (req, res) => {
     );
 
     if (rows.length > 0) {
-      res.status(200).json({ message: "Login realizado com sucesso!" });
+      req.session.user = rows[0];
+      res.redirect("/views/microarea.html")
     } else {
       res.status(401).json({ error: "Credenciais inválidas!" });
     }
@@ -55,7 +77,7 @@ app.post("/login", async (req, res) => {
 });
 
 // Rota para a página de cadastro
-app.get("/cadastro.html", (req, res) => {
+app.get("/views/cadastro.html", (req, res) => {
   res.render("cadastro.html");
 });
 
@@ -66,9 +88,9 @@ app.get("/esq_senha.html", (req, res) => {
 
 // Rota de cadastro
 app.post("/cadastro", async (req, res) => {
-  const { nome, email, formacao, senha } = req.body;
+  const { nome, email, formacao, senha, telefone,data_contratacao, rg, cpf} = req.body;
 
-  if (!nome || !email || !formacao || !senha) {
+  if (!nome || !email || !formacao || !senha || !telefone || !data_contratacao || !rg || !cpf) {
     return res
       .status(400)
       .json({ error: "Você precisa preencher todos os campos!" });
@@ -76,8 +98,8 @@ app.post("/cadastro", async (req, res) => {
 
   try {
     const [rows] = await db.query(
-      "INSERT INTO usuarios (nome, email, formacao, senha) VALUES (?, ?, ?, ?)",
-      [nome, email, formacao, senha]
+      "INSERT INTO usuarios (nome, email, formacao, senha, telefone, data_contratacao, rg, cpf) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+      [nome, email, formacao, senha, telefone, data_contratacao, rg, cpf]
     );
     res.redirect("/");
   } catch (error) {
@@ -85,16 +107,17 @@ app.post("/cadastro", async (req, res) => {
     res.status(500).json({ error: "Erro ao cadastrar usuário" });
   }
 });
-// Rota para receber informacoes dos agentes
-app.get("/usuarios", async (req, res) => {
-  try {
-    const [rows] = await pool.query("SELECT * FROM usuarios");
-    res.render("conta.html", { usuarios: rows });
-  } catch (error) {
-    console.error("Erro ao obter usuários:", error);
-    res.status(500).json({ error: "Erro ao obter usuários" });
-  }
-});
+
+// Rota de logout 
+app.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).json({ error: "Erro ao fazer logout" });
+    }
+    res.redirect("/views/login.html");
+  });
+})
+
 // Iniciar o servidor
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);

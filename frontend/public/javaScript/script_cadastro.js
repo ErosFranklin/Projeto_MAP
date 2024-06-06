@@ -47,7 +47,7 @@ form.addEventListener("submit", async (e) => {
       formacao: formacao.value,
       senha: password.value,
       conf_password: conf_password.value,
-      numero: numero.value,
+      telefone: numero.value,
       data_contratacao: data_contratacao.value,
       cpf: cpf.value,
       rg: rg.value
@@ -68,7 +68,7 @@ form.addEventListener("submit", async (e) => {
       }
 
       // Redirecionar para a tela de login
-      window.location.href = "/login.html";
+      window.location.href = "/views/login.html";
     } catch (error) {
       console.error('Erro:', error);
       textForm.textContent = "Erro ao cadastrar usuário!";
