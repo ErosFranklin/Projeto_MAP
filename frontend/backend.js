@@ -19,12 +19,14 @@ app.use("/public", express.static(path.join(__dirname, "public")));
 app.set("views", path.join(__dirname, "/views"));
 
 // Configuração de sessão
-app.use(session({
-  secret: 'hnouihwaiubkniurgiqobvdibaiurbily7s57sfvrv545sdv',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false } //como não estamos usando https é false
-}));
+app.use(
+  session({
+    secret: "hnouihwaiubkniurgiqobvdibaiurbily7s57sfvrv545sdv",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }, //como não estamos usando https é false
+  })
+);
 
 // Rotas para a página de login
 app.get("/", (req, res) => {
@@ -36,9 +38,9 @@ app.get("/views/login.html", (req, res) => {
 });
 
 //rota para a página de microarea(homepage) depois de logar
-app.get("/views/microarea.html", (req,res) =>{
+app.get("/views/microarea.html", (req, res) => {
   res.render("microarea.html");
-})
+});
 
 app.get("/views/conta.html", (req, res) => {
   if (req.session.user) {
@@ -66,7 +68,7 @@ app.post("/login", async (req, res) => {
 
     if (rows.length > 0) {
       req.session.user = rows[0];
-      res.redirect("/views/microarea.html")
+      res.redirect("/views/microarea.html");
     } else {
       res.status(401).json({ error: "Credenciais inválidas!" });
     }
@@ -88,9 +90,19 @@ app.get("/esq_senha.html", (req, res) => {
 
 // Rota de cadastro
 app.post("/cadastro", async (req, res) => {
-  const { nome, email, formacao, senha, telefone,data_contratacao, rg, cpf} = req.body;
+  const { nome, email, formacao, senha, telefone, data_contratacao, rg, cpf } =
+    req.body;
 
-  if (!nome || !email || !formacao || !senha || !telefone || !data_contratacao || !rg || !cpf) {
+  if (
+    !nome ||
+    !email ||
+    !formacao ||
+    !senha ||
+    !telefone ||
+    !data_contratacao ||
+    !rg ||
+    !cpf
+  ) {
     return res
       .status(400)
       .json({ error: "Você precisa preencher todos os campos!" });
@@ -108,7 +120,7 @@ app.post("/cadastro", async (req, res) => {
   }
 });
 
-// Rota de logout 
+// Rota de logout
 app.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     if (err) {
@@ -116,7 +128,24 @@ app.get("/logout", (req, res) => {
     }
     res.redirect("/views/login.html");
   });
-})
+});
+
+// Rota para buscar todos os usuários com seus respectivos números
+app.get("/usuarios", async (req, res) => {
+  try {
+    const [rows] = await db.query("SELECT nome, telefone, email FROM usuarios ORDER BY nome");
+    res.json(rows);
+  } catch (error) {
+    console.error("Erro ao buscar usuários:", error);
+    res.status(500).json({ error: "Erro ao buscar usuários" });
+  }
+});
+
+
+// Rota para area de Contatos dos agentes de saude
+app.get("/contatos", (req, res) => {
+  res.render("contatos.html");
+});
 
 // Iniciar o servidor
 app.listen(port, () => {

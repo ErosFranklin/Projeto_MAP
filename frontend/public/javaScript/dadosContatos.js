@@ -1,22 +1,31 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    try {
-      const response = await fetch("http://localhost:8000/usuarios");
-      const usuarios = await response.json();
+  try {
+    const response = await fetch("http://localhost:8000/usuarios");
+    const usuarios = await response.json();
 
-      const usuariosDiv = document.getElementById("usuarios");
-      usuarios.forEach(usuario => {
-        const usuarioDiv = document.createElement("div");
-        usuarioDiv.classList.add("usuario");
+    console.log(usuarios);
 
-        usuarioDiv.innerHTML = `
-          <p>Nome: ${usuario.nome}</p>
-          <p>Email: ${usuario.email}</p>
-          <p>Formação: ${usuario.formacao}</p>
-        `;
+    const nomesDiv = document.getElementById("nomes-agentes");
+    const telefonesDiv = document.getElementById("telefones-agentes");
+    const emailDiv = document.getElementById("email-agentes")
 
-        usuariosDiv.appendChild(usuarioDiv);
-      });
-    } catch (error) {
-      console.error("Erro ao buscar usuários:", error);
-    }
+    usuarios.forEach(usuario => {
+      const nomeElement = document.createElement("p");
+      nomeElement.textContent = `${usuario.nome}`;
+      nomesDiv.appendChild(nomeElement);
+
+      const telefoneElement = document.createElement("p");
+      telefoneElement.textContent = `${usuario.telefone}`;
+      telefonesDiv.appendChild(telefoneElement);
+
+      const emailElement = document.createElement("p");
+      emailElement.textContent = `${usuario.email}`
+      emailDiv.appendChild(emailElement);
+    });
+  } catch (error) {
+    console.error("Erro ao buscar usuários:", error);
+  }
 });
+
+
+

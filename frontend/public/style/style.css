@@ -179,6 +179,7 @@ body{
     height:300px;
     border-radius:100%;
     transform:translate(-50%,-50%);
+    z-index: 0;
 }
 .decoracao2{
     display:flex;
@@ -191,6 +192,7 @@ body{
     height:300px;
     border-radius:100%;
     transform:translate(-50%,-50%);
+    z-index: -1;
 }
 
 .login .erro{
@@ -739,7 +741,7 @@ body{
 .conta{
     background-image: linear-gradient(to top,#fff, #fff);
     overflow: auto;
-    height:130vh;
+    height:150vh;
 }
 .title-conta h2{
     display:flex;
@@ -760,7 +762,7 @@ body{
 .titulo-dados-polo{
     display:flex;
     position:absolute;
-    top:63%;
+    top:83%;
     left:8%;
     color:var(--cor-texto2);
     font-style: italic;
@@ -771,6 +773,7 @@ body{
     position:absolute;
     width: 89%;
     height: auto;
+    margin-bottom:20px;
     top:19%;
     left:8%;
     background: transparent;
@@ -814,7 +817,7 @@ body{
     position:absolute;
     width: 89%;
     height: auto;
-    top:70%;
+    top:90%;
     left:8%;
     background: transparent;
     border: 2px solid var(--cor-borda);
@@ -827,6 +830,99 @@ body{
     grid-gap: 10px;
 }
 
+.title-contatos{
+    display: flex;
+    top:50px;
+    left:50%;
+    position:absolute;
+    transform:translate(-50%,-50%);
+}
+.title-contatos h1{
+    color:var(--cor-texto);
+    text-shadow: 2px 3px 1px var(--cor-sombra-texto);
+}
+.title-contatos i{
+    font-size:30px;
+    padding-left:10px;
+    color:#fff;
+    text-shadow: 0px 3px 1px var(--cor-sombra-texto);
+    transform: translateY(30px);
+}
+.contatos-agentes{
+    display: flex;
+    text-align: center;
+    font-size:18px;
+    background-color: #ffffffd3;
+    justify-content: space-between;
+    border-radius:10px;
+    border: 5px outset var(--cor-borda);
+    color:var(--cor-texto2);
+    box-shadow: 2px 4px 1px var(--cor-sombra-texto);
+    width: 80%;
+    height: auto;
+    padding:15px;
+    margin-bottom:50px;
+    top:350px;
+    left:50%;
+    position:absolute;
+    overflow-y: auto;
+    transform: translate(-50%,-50%);
+}
+
+.contatos-agentes #nomes-agentes{
+    position:relative;
+    text-align: left;
+    
+}
+.contatos-agentes #nomes-agentes h2{
+   text-align: center;
+}
+.contatos-agentes #nomes-agentes p{
+    width: 100%;
+    font-weight: lighter;
+    text-shadow: 1px 1px 2px var(--cor-sombra-texto);
+}
+.contatos-agentes #telefones-agentes{
+    position:relative;
+   text-align: center;
+}
+.contatos-agentes #telefones-agentes h2{
+    text-align: center;
+}
+.contatos-agentes #telefones-agentes p{
+    width: 100%;
+    font-weight: lighter;
+    text-shadow: 1px 1px 2px var(--cor-sombra-texto);
+}
+.contatos-agentes #email-agentes{
+    max-width: 700px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+.contatos-agentes #email-agentes p{
+    width: 100%;
+    font-weight: lighter;
+    text-shadow: 1px 1px 2px var(--cor-sombra-texto);
+}
+.btts-contatos {
+    display:block;
+    width: 100px;
+    text-align: center;
+    background-image: linear-gradient(to left, var(--cor-fundo2), var(--cor-fundo), var(--cor-fundo2));
+    border:1px solid var(--cor-rodape);
+    border-radius: 10px;
+    margin:10px;
+    font-size: 18px;
+    color:var(--cor-texto);
+}
+.btts-contatos a{
+    text-decoration: none;
+    color: var(--cor-texto);
+}
+.btts-contatos:hover{
+    background-image: linear-gradient(to left, var(--cor-fundo), var(--cor-fundo2), var(--cor-fundo));
+}
 .rodape{
     bottom:0;
     position:absolute;
