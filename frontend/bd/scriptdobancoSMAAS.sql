@@ -288,3 +288,17 @@ insert into visita(id_familia, id_agente, motivo, data_da_visita) values (
     'Verificar condição de saúde de paciente com diabetes e acompanhar tratamento de paciente acometido por AVC',
     '2024-04-26'
 );
+
+/*
+Novas atualizações (07/06/2024):
+-> tornando email, cpf e rg únicos;
+-> criando nova coluna na tabela visitas para marcar o status da visita.
+*/
+alter table paciente modify column email varchar(200) not null unique;
+alter table paciente modify column cpf varchar(15) not null unique;
+alter table paciente modify column rg varchar(12) not null unique;
+
+alter table visita add column status_da_visita boolean not null;
+update visita set status_da_visita = false where id_visita = 1;
+update visita set status_da_visita = true where id_visita = 2;
+update visita set status_da_visita = true where id_visita = 3;
