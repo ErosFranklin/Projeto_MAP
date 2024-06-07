@@ -852,7 +852,7 @@ body{
     display: flex;
     text-align: center;
     font-size:18px;
-    background-color: #ffffffd3;
+    background-color: #e2edff;
     justify-content: space-between;
     border-radius:10px;
     border: 5px outset var(--cor-borda);
@@ -860,7 +860,6 @@ body{
     box-shadow: 2px 4px 1px var(--cor-sombra-texto);
     width: 80%;
     height: auto;
-    padding:15px;
     margin-bottom:50px;
     top:350px;
     left:50%;
@@ -871,22 +870,26 @@ body{
 
 .contatos-agentes #nomes-agentes{
     position:relative;
-    text-align: left;
-    
+    border: 2px solid var(--cor-borda);
+    width: 500px;
+    padding: 0px 15px;
 }
-.contatos-agentes #nomes-agentes h2{
+.contatos-agentes #nomes-agentes h3{
    text-align: center;
 }
 .contatos-agentes #nomes-agentes p{
     width: 100%;
+    text-align: left;
     font-weight: lighter;
     text-shadow: 1px 1px 2px var(--cor-sombra-texto);
 }
 .contatos-agentes #telefones-agentes{
     position:relative;
-   text-align: center;
+    border: 2px solid var(--cor-borda);
+    width: 300px;
+    padding: 0px 15px;
 }
-.contatos-agentes #telefones-agentes h2{
+.contatos-agentes #telefones-agentes h3{
     text-align: center;
 }
 .contatos-agentes #telefones-agentes p{
@@ -896,8 +899,14 @@ body{
 }
 .contatos-agentes #email-agentes{
     max-width: 700px;
-    overflow: hidden;
+    position:relative;
+    text-align: left;
     text-overflow: ellipsis;
+    border: 2px solid var(--cor-borda);
+    padding: 0px 15px;
+
+}
+.contatos-agentes #email-agentes h3{
     text-align: center;
 }
 .contatos-agentes #email-agentes p{
@@ -909,11 +918,9 @@ body{
     display:block;
     width: 100px;
     text-align: center;
-    background-image: linear-gradient(to left, var(--cor-fundo2), var(--cor-fundo), var(--cor-fundo2));
-    border:1px solid var(--cor-rodape);
     border-radius: 10px;
     margin:10px;
-    font-size: 18px;
+    font-size: 20px;
     color:var(--cor-texto);
 }
 .btts-contatos a{
@@ -921,7 +928,58 @@ body{
     color: var(--cor-texto);
 }
 .btts-contatos:hover{
-    background-image: linear-gradient(to left, var(--cor-fundo), var(--cor-fundo2), var(--cor-fundo));
+    text-decoration: underline;
+    text-shadow:0px 5px 3px var(--cor-sombra-texto);
+}
+
+.sobre{
+    background-image: linear-gradient(to top,#fff, #fff);
+}
+.container-titulo-image{
+    display:flex;
+    background-color: var(--cor-fundo2);
+    flex-direction: column;
+    width: 100%;
+    height: 60%;
+    box-shadow: 0px 2px 1px var(--cor-sombra-texto);
+    border-radius:0px 0px 10px 10px;
+}
+.container-titulo-image .imagem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.container-titulo-image .imagem img{
+    position:relative;
+    margin-top: -70px;
+    width: 60%;
+    filter:drop-shadow(3px 6px 1px var(--cor-sombra-texto));
+} 
+.container-titulo-image .titulo{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    position: absolute;
+    top:45%;
+    left:0;
+    
+}
+.container-titulo-image .titulo h2{
+    position:relative;
+    color:var(--cor-texto);
+    width: 200px;
+    padding-left: 30px;
+    text-shadow: 3px 3px 10px var(--cor-sombra-texto);
+}
+.descricao{
+    display:flex;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    text-align: justify;
 }
 .rodape{
     bottom:0;
