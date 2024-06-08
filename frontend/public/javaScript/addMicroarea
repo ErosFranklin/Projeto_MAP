@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const modal = document.querySelector('#modal');
             const microareaContainer = document.getElementById('microarea-container');
             const nomeMicroareaInput = document.querySelector('#nomeMicroarea');
-            const quantPessoasInput = document.querySelector('#quantPessoas');
             const botaoFechar = document.querySelector('#fechar');
 
             const modalExibido = localStorage.getItem('modalExibido');
@@ -20,38 +19,37 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             botaoFechar.addEventListener('click', function() {
-                fecharJanela(overlay, modal, nomeMicroareaInput, quantPessoasInput);
+                fecharJanela(overlay, modal, nomeMicroareaInput);
             });
 
             document.querySelector('#criarMicroarea').addEventListener('click', function() {
                 const nomeMicroarea = nomeMicroareaInput.value;
-                const quantPessoas = quantPessoasInput.value;
 
-                if (verificarMicroarea(nomeMicroarea, quantPessoas)) {
+                if (verificarMicroarea(nomeMicroarea)) {
                     alert("Área Existente!");
                     return;
-                } else if (nomeMicroarea === "" || quantPessoas === "") {
+                } else if (nomeMicroarea === "" ) {
                     alert("Preencha todas as informações!");
                     return;
                 }
 
                 const id = uuidv4(); // Gera um UUID
-                const novaMicroarea = criarMicroarea(nomeMicroarea, quantPessoas, id);
+                const novaMicroarea = criarMicroarea(nomeMicroarea, id);
                 microareaContainer.appendChild(novaMicroarea);
 
-                salvarMicroareaNoLocalStorage(id, nomeMicroarea, quantPessoas);
+                salvarMicroareaNoLocalStorage(id, nomeMicroarea);
 
-                fecharJanela(overlay, modal, nomeMicroareaInput, quantPessoasInput);
+                fecharJanela(overlay, modal, nomeMicroareaInput);
             });
 
             botaoFechar.addEventListener('click', function() {
-                fecharJanela(overlay, modal, nomeMicroareaInput, quantPessoasInput);
+                fecharJanela(overlay, modal, nomeMicroareaInput);
             });
 
-            function criarMicroarea(endereco, quantPessoas, id) {
+            function criarMicroarea(endereco, id) {
                 const novaMicroarea = document.createElement('div');
                 novaMicroarea.className = 'area';
-                novaMicroarea.innerHTML = '<h2><span class="microarea-endereco" data-id="' + id + '">' + endereco + '</span></h2><p> Pessoas Cadastradas: ' + quantPessoas + '</p>';
+                novaMicroarea.innerHTML = '<h2><span class="microarea-endereco" data-id="' + id + '">' + endereco + '</p>';
             
                 const editar = document.createElement('button');
                 editar.innerHTML = '<i class="fa-solid fa-pen-to-square"></i>';
@@ -73,41 +71,38 @@ document.addEventListener('DOMContentLoaded', function() {
                 detalhes.innerHTML = '<i class="fas fa-info-circle"></i>';
                 detalhes.className = 'detalhes';
                 detalhes.addEventListener('click', function() {
-                    window.location.href = "detalhesMicroarea.html?id=" + id;
+                    window.location.href = "/detalhesMicroarea?id=" + id;
                 });
                 novaMicroarea.appendChild(detalhes);
             
                 return novaMicroarea;
             }
 
-            function salvarMicroareaNoLocalStorage(id, nome, quantPessoas) {
+            function salvarMicroareaNoLocalStorage(id, nome) {
                 const microarea = {
                     id: id,
                     nome: nome,
-                    quantPessoas: quantPessoas
                 };
                 let microareas = JSON.parse(localStorage.getItem('microareas')) || [];
                 microareas.push(microarea);
                 localStorage.setItem('microareas', JSON.stringify(microareas));
             }
 
-            function fecharJanela(overlay, modal, nomeMicroareaInput, quantPessoasInput) {
+            function fecharJanela(overlay, modal, nomeMicroareaInput) {
                 nomeMicroareaInput.value = "";
-                quantPessoasInput.value = "";
                 overlay.style.display = 'none';
                 modal.style.display = 'none';
                 localStorage.setItem('modalExibido', 'false');
             }
 
-            function verificarMicroarea(nomeMicroarea, quantPessoas) {
+            function verificarMicroarea(nomeMicroarea) {
                 var microareas = document.querySelectorAll('.area');
 
                 for (var i = 0; i < microareas.length; i++) {
                     var area = microareas[i];
                     var nome = area.querySelector('.microarea-endereco').innerText.trim();
-                    var pessoas = area.querySelector('p').innerText.trim();
 
-                    if (nome === nomeMicroarea.trim() && pessoas === quantPessoas.trim()) {
+                    if (nome === nomeMicroarea.trim()) {
                         return true;
                     }
                 }
@@ -125,9 +120,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 inputNome.type = 'text';
                 inputNome.value = span.textContent;
 
-                const inputQuantPessoas = document.createElement('input');
-                inputQuantPessoas.type = 'text';
-                inputQuantPessoas.value = p.textContent.replace(' Pessoas Cadastradas: ', '');
 
                 span.classList.add('editaM');
                 p.classList.add('editaM');
@@ -135,8 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 span.innerHTML = '';
                 span.appendChild(inputNome);
 
-                p.innerHTML = 'Pessoas Cadastradas: ';
-                p.appendChild(inputQuantPessoas);
                 
                 const salvar = document.createElement('button');
                 salvar.innerHTML = '<i class="fa-solid fa-floppy-disk"></i>';
@@ -144,38 +134,36 @@ document.addEventListener('DOMContentLoaded', function() {
                 salvar.classList.add('editarMicroarea');
                 salvar.addEventListener('click', function() {
                     const novoNome = inputNome.value.trim();
-                    const novaQuantPessoas = inputQuantPessoas.value.trim();
+                    
 
-                    if (novoNome === '' || novaQuantPessoas === '') {
+                    if (novoNome === '' ) {
                         alert('Por favor, preencha todos os campos.');
                         return;
                     }
 
-                    if (novoNome !== span.textContent || novaQuantPessoas !== p.textContent) {
-                        if (verificarMicroarea(novoNome, novaQuantPessoas)) {
+                    if (novoNome !== span.textContent ) {
+                        if (verificarMicroarea(novoNome)) {
                             alert('Já existe um grupo com esse nome e quantidade de pessoas.');
                             return;
                         }
 
                         span.textContent = novoNome;
-                        p.textContent = 'Pessoas Cadastradas: ' + novaQuantPessoas;
-                        atualizarMicroareaNoLocalStorage(id, novoNome, novaQuantPessoas);
+                        atualizarMicroareaNoLocalStorage(id, novoNome);
                     }
                     
                     inputNome.remove();
-                    inputQuantPessoas.remove();
+                    
                     salvar.remove();
                     area.appendChild(editar);
                 });
                 area.appendChild(salvar);
             }
 
-            function atualizarMicroareaNoLocalStorage(id, nome, quantPessoas) {
+            function atualizarMicroareaNoLocalStorage(id, nome) {
                 let microareas = JSON.parse(localStorage.getItem('microareas')) || [];
                 for (let i = 0; i < microareas.length; i++) {
                     if (microareas[i].id === id) {
                         microareas[i].nome = nome;
-                        microareas[i].quantPessoas = quantPessoas;
                         break;
                     }
                 }

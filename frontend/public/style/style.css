@@ -934,6 +934,7 @@ body{
 
 .sobre{
     background-image: linear-gradient(to top,#fff, #fff);
+    overflow-y: auto;
 }
 .container-titulo-image{
     display:flex;
@@ -965,7 +966,6 @@ body{
     position: absolute;
     top:45%;
     left:0;
-    
 }
 .container-titulo-image .titulo h2{
     position:relative;
@@ -976,11 +976,114 @@ body{
 }
 .descricao{
     display:flex;
-    width: 80%;
+    width: 97%;
+    font-size:20px;
+    color:var(--cor-titulo);
+    font-weight: lighter;
     align-items: center;
     justify-content: center;
     text-align: justify;
+    padding:15px;
 }
+.criadores .titulo h2{
+    position:relative;
+    color:var(--cor-titulo);
+    width: 500px;
+    padding-left: 30px;
+    text-shadow: 3px 3px 10px var(--cor-sombra-texto);
+}
+.container-criadores{
+    display:flex;
+    width: 100vw;
+    height: auto;
+    padding:10px 35px;
+    position: absolute;
+    
+}
+.desenvolvedores{
+    display:grid;
+    grid-template-columns: repeat(5,1fr);
+    gap:10px;
+}
+.desenvolvedor{
+    display:flex;
+    background-color: #005eff27;
+    border:2px solid var(--cor-borda);
+    flex-direction: column;
+    justify-content: space-between;
+    gap:0;
+    flex-wrap: wrap;
+    text-align: center;
+    border-radius: 15px;
+    width: 275px;
+    height: 430px;
+    position:relative;
+    margin-bottom: 50px;
+    text-shadow: 3px 3px 4px var(--cor-sombra-texto);
+    box-shadow: 0px 3px 2px var(--cor-fundo);
+}
+.desenvolvedor .imagem{
+    display:flex;
+    border-radius:100%;
+    max-width: 200px;
+    max-height: 200px;
+    align-items: center;
+    justify-content: center;
+    margin: 30px ;
+    border:5px solid var(--cor-fundo2);
+    box-shadow: 0px 0px  10px 10px var(--cor-fundo2);
+}
+.desenvolvedor img{
+    position: relative;
+    max-width: 200px;
+    max-width: 200px;
+    top:76%;
+    left: 50%;
+    align-items: center;
+    clip-path: circle();
+    margin:0;
+    padding:0;
+    transform: translate(-50%,-50%);
+}
+.desenvolvedor #gui{
+    top:50%;
+    left: 50%;
+}
+.desenvolvedor #francisco{
+    top:80%;
+    left: 50%;
+}
+.desenvolvedor #gabriel{
+    top:50%;
+    left: 50%;
+}
+.desenvolvedor #kaio{
+    top:50%;
+    left: 50%;
+}
+.desenvolvedor h3{
+    color:var(--cor-titulo);
+    margin:0px 0px 10px 0px;
+
+    padding:0;
+}
+.desenvolvedor h4{
+    position: relative;
+    color:var(--cor-icone);
+    margin:0;
+    padding:0;
+}
+.desenvolvedor a{
+    bottom:0;
+    font-size: 30px;
+    color:var(--cor-icone);
+    margin:0;
+    padding:0px 0px 10px 0px;
+}
+.desenvolvedor a:hover{
+    color:var(--cor-texto2);
+}
+
 .rodape{
     bottom:0;
     position:absolute;

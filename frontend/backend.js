@@ -44,7 +44,7 @@ app.get("/views/microarea.html", (req, res) => {
 
 app.get("/views/conta.html", (req, res) => {
   if (req.session.user) {
-    res.render("conta.html", { usuario: req.session.user });
+    res.render("conta.html", { agente: req.session.user });
   } else {
     res.redirect("/views/login.html");
   }
@@ -62,7 +62,7 @@ app.post("/login", async (req, res) => {
 
   try {
     const [rows] = await db.query(
-      "SELECT * FROM usuarios WHERE email = ? AND senha = ?",
+      "SELECT * FROM agente WHERE email = ? AND senha = ?",
       [email, senha]
     );
 
@@ -88,6 +88,8 @@ app.get("/esq_senha.html", (req, res) => {
   res.render("esq_senha.html");
 });
 
+
+
 // Rota de cadastro
 app.post("/cadastro", async (req, res) => {
   const { nome, email, formacao, senha, telefone, data_contratacao, rg, cpf } =
@@ -110,13 +112,13 @@ app.post("/cadastro", async (req, res) => {
 
   try {
     const [rows] = await db.query(
-      "INSERT INTO usuarios (nome, email, formacao, senha, telefone, data_contratacao, rg, cpf) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO agente (nome, email, formacao, senha, telefone, data_contratacao, rg, cpf) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
       [nome, email, formacao, senha, telefone, data_contratacao, rg, cpf]
     );
     res.redirect("/");
   } catch (error) {
-    console.error("Erro ao cadastrar usuário:", error);
-    res.status(500).json({ error: "Erro ao cadastrar usuário" });
+    console.error("Erro ao cadastrar agente:", error);
+    res.status(500).json({ error: "Erro ao cadastrar agente" });
   }
 });
 
@@ -131,13 +133,13 @@ app.get("/logout", (req, res) => {
 });
 
 // Rota para buscar todos os usuários com seus respectivos números
-app.get("/usuarios", async (req, res) => {
+app.get("/agente", async (req, res) => {
   try {
-    const [rows] = await db.query("SELECT nome, telefone, email FROM usuarios ORDER BY nome");
+    const [rows] = await db.query("SELECT nome, telefone, email FROM agente ORDER BY nome");
     res.json(rows);
   } catch (error) {
-    console.error("Erro ao buscar usuários:", error);
-    res.status(500).json({ error: "Erro ao buscar usuários" });
+    console.error("Erro ao buscar agente:", error);
+    res.status(500).json({ error: "Erro ao buscar agente" });
   }
 });
 
@@ -146,6 +148,16 @@ app.get("/usuarios", async (req, res) => {
 app.get("/contatos", (req, res) => {
   res.render("contatos.html");
 });
+
+// Rota para area sobre o sistema
+app.get("/sobre", (req, res) => {
+  res.render("sobre.html");
+});
+
+app.get("/detalhesMicroarea", (req, res) => {
+  res.render("detalhesMicroarea.html");
+});
+
 
 // Iniciar o servidor
 app.listen(port, () => {

@@ -34,7 +34,7 @@ const pool = mysql.createPool({
   host: "localhost",
   user: "root",
   password: "eros1401",
-  database: "smaas",
+  database: "SMAAS",
 });
 
 //Exportamos para que nosso arquivo backend.js consiga acessa-lo:
