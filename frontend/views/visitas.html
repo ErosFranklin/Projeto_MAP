@@ -2,7 +2,8 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Microarea</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitas</title>
     <link rel="stylesheet" href="../public/style/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -45,55 +46,50 @@
             <h2 id="bairroTitulo"></h2>
         </span>
         <div class="btnNovaMicroarea">
-            <button id="novaMicroarea">Nova Familia</button>
+            <button id="novaVisita">Nova Visita</button>
         </div>
         
         <div id="overlay" class="overlay">
             <div id="modal" class="modal">
-                <h2>Cadastrar Familia</h2>
-                <label for="nomeMicroarea">Responsavel</label>
+                <h2>Cadastrar Visita</h2>
+
+                <label for="visita-motivo">Motivo</label>
                 <div class="componentesM">
-                    <i class="fa-solid fa-location-dot"></i><input type="text" name="nomeResponsavel" id="nomeResponsavel" placeholder="Nome Completo" required>
+                    <i class="fa-solid fa-location-dot"></i><input type="text" name="visita-motivo" id="visita-motivo" placeholder="Nome Completo" required>
                 </div>
-                <label for="numDependentes">Numero de Dependentes:</label>
+                <label for="visita-data">Data da Visita:</label>
                 <div class="componentesM">
-                    <i class="fa-solid fa-location-dot"></i><input type="text" name="numDependentes" id="numDependentes" placeholder="ex:3" required>
+                    <i class="fa-solid fa-location-dot"></i><input type="date" name="visita-data" id="visita-data" placeholder="ex:3" required>
                 </div>
-                <label for="familia-bairro">Bairro:</label>
+                <label for="visita-status">Status da Visita:</label>
                 <div class="componentesM">
-                    <i class="fa-solid fa-location-dot"></i><input type="text" name="familia-bairro" id="familia-bairro" placeholder="ex:Centro" required>
+                    <i class="fa-solid fa-location-dot"></i><input type="checkbox" name="visita-status" id="visita-status"  required>
                 </div>
-                <label for="familia-rua">Rua:</label>
-                <div class="componentesM">
-                    <i class="fa-solid fa-location-dot"></i><input type="text" name="familia-rua" id="familia-rua" placeholder="ex: Rua Tenente Nicolau Lopes" required>
-                </div>
-                <label for="familia-numero">Numero:</label>
-                <div class="componentesM">
-                    <i class="fa-solid fa-location-dot"></i><input type="number" name="familia-numero" id="familia-numero" placeholder="ex:205" required>
-                </div>
-                <div class="btnsMicroarea">
-                    <button id="criarMicroarea" action="/familia">Criar</button>
+                <div class="btnsVisita">
+                    <button id="criarVisita" action="/visita">Criar</button>
                     <button id="fechar">Fechar</button>
                 </div>
             </div>
         </div>
-        <div id="microarea-container" class="microarea-container">
-            <div class="familia">
-                <div id="rua-familia">
-                    <h3>Rua</h3>
-                </div>
-                <div  id="responsavel-familia">
-                    <h3>Responsavel</h3>
-                </div>
-                <div  id="id-familia">
+        <div id="visita-container" class="visita-container">
+            <div class="visita">
+                <div id="id-familia">
                     <h3>Id da Familia</h3>
+                </div>
+                <div  id="data-visita">
+                    <h3>Data da Visita</h3>
+                </div>
+                <div id="motivo-visita">
+                    <h3>Motivo</h3>
+                </div>
+                <div id="status-visita">
+                    <h3>Status da Visita</h3>
                 </div>
             </div>
         </div>
     </main>
-    <script src="../public/javaScript/addMicroarea.js"></script>
-    <script src="../public/javaScript/dadosMicroarea.js"></script>
-    <script src="../public/javaScript/menuLateral.js"></script>
+    <script src="../public/javaScript/addVisita.js"></script>
+    <script src="../public/javaScript/detalheVisitaMicroarea.js"></script>
     <script src="../public/javaScript/menuLateral.js"></script>
 </body>
 </html>

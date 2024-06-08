@@ -122,6 +122,52 @@ app.post("/cadastro", async (req, res) => {
   }
 });
 
+// Rota Cadastro de Familia
+app.post("/familia", async (req, res) => {
+  const { responsavel, numero_dependentes, bairro, rua, numero } = req.body;
+
+  if (!responsavel || !numero_dependentes || !bairro || !rua || !numero) {
+    return res.status(400).json({ error: "Você precisa preencher todos os campos!" });
+  }
+
+  try {
+    const [rows] = await db.query(
+      "INSERT INTO familia (responsavel, numero_dependentes, rua, bairro, numero) VALUES (?, ?, ?, ?, ?)",
+      [responsavel, numero_dependentes, rua, bairro, numero]
+    );
+    res.status(201).json({ message: "Família cadastrada com sucesso!" });
+  } catch (error) {
+    console.error("Erro ao cadastrar família:", error);
+    res.status(500).json({ error: "Erro ao cadastrar família" });
+  }
+});
+
+// Rota de Cadastro de Visita
+app.post("/visita", async (req, res) => {
+  const { data_da_visita, motivo } = req.body;
+
+  if (
+    !data_da_visita ||
+    !motivo 
+  ) {
+    return res
+      .status(400)
+      .json({ error: "Você precisa preencher todos os campos!" });
+  }
+
+  try {
+    const [rows] = await db.query(
+      "INSERT INTO visita ( data_da_visita, motivo ) VALUES (?, ?, ?)",
+      [ data_da_visita, motivo]
+    );
+    res.redirect("/");
+  } catch (error) {
+    console.error("Erro ao cadastrar visita:", error);
+    res.status(500).json({ error: "Erro ao cadastrar visita" });
+  }
+});
+
+
 // Rota de logout
 app.get("/logout", (req, res) => {
   req.session.destroy((err) => {
@@ -143,6 +189,28 @@ app.get("/agente", async (req, res) => {
   }
 });
 
+//Rota paras buscar informacoes da familia
+app.get("/familia", async (req, res) => {
+  try {
+    const [rows] = await db.query("SELECT rua, responsavel, id_familia FROM familia ORDER BY id_familia");
+    res.json(rows);
+  } catch (error) {
+    console.error("Erro ao buscar agente:", error);
+    res.status(500).json({ error: "Erro ao buscar agente" });
+  }
+});
+
+//Rota para buscar informacoes visita
+app.get("/visita", async (req, res) => {
+  try {
+    const [rows] = await db.query("SELECT id_familia, data_da_visita, motivo FROM visita ORDER BY id_familia");
+    res.json(rows);
+  } catch (error) {
+    console.error("Erro ao buscar visita:", error);
+    res.status(500).json({ error: "Erro ao buscar visita" });
+  }
+});
+
 
 // Rota para area de Contatos dos agentes de saude
 app.get("/contatos", (req, res) => {
@@ -154,9 +222,16 @@ app.get("/sobre", (req, res) => {
   res.render("sobre.html");
 });
 
-app.get("/detalhesMicroarea", (req, res) => {
-  res.render("detalhesMicroarea.html");
+// Rota para visita
+app.get("/visitas", (req, res) => {
+  res.render("visitas.html");
 });
+
+app.get("/detalhesMicroarea/:id", (req, res) => {
+  const familiaId = req.params.id;
+  res.render("detalhesMicroarea.html", { familiaId });
+});
+
 
 
 // Iniciar o servidor
