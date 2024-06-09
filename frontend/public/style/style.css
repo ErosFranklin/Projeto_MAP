@@ -467,10 +467,17 @@ body{
     margin-left: 40px;
     opacity: 1;
 }
-.titleMicroarea{
+.title{
     font-size:1.2em;
     color:var(--cor-titulo);
     text-shadow:2px 2px 3px var(--cor-sombra-texto);;
+}
+.title h2{
+    display:flex;
+    font-size: 2em;
+    left:8%;
+    top:2%;
+    position:absolute;
 }
 .microarea-container {
 
@@ -619,19 +626,13 @@ body{
     transition: .3s;
 }
 
-.btnNovaMicroarea{
+.btnNovo{
     display: flex;
     top:5%;
     right: 1%;
     position:fixed;
 }
-.titleMicroarea h2{
-    display:flex;
-    font-size: 2em;
-    left:8%;
-    top:2%;
-    position:absolute;
-}
+
 #novaMicroarea{
     padding: 15px;
     border-style:none;
@@ -653,10 +654,11 @@ body{
     text-align: center;
     grid-column: auto;
     width: 40%;
-    height:73%;
+    height:80%;
     border-radius: 10px;
     border:1px solid var(--cor-borda);
     padding:40px;
+    overflow-y: auto;
     transition: .2s ;
 }
 .modal h2{
@@ -702,13 +704,13 @@ body{
     font-size:1.2em;
 }
 
-.btnsMicroarea{
+.btnsCadastro{
     display:flex;
     align-items: center;
     justify-content: center;
     margin-top:30px;
 }
-#criarMicroarea{
+#criarMicroarea, #criarPaciente{
     background-color: var(--cor-fundo);
     border-style: none;
     border-radius: 5px;
@@ -720,7 +722,7 @@ body{
     cursor:pointer;
     transition: .3s;
 }
-#criarMicroarea:hover{
+#criarMicroarea:hover, #criarPaciente:hover{
     background-color: var(--cor-fundo2);
 }
 #fechar{
@@ -741,17 +743,17 @@ body{
     display: flex;
     text-align: center;
     font-size:18px;
-    background-color: #e2edff;
+    background-color: #fff;
     justify-content: space-between;
     border-radius:10px;
     border: 5px outset var(--cor-borda);
     color:var(--cor-texto2);
     box-shadow: 2px 4px 1px var(--cor-sombra-texto);
-    width: 80%;
+    width: 90%;
     height: auto;
     margin-bottom:50px;
     top:350px;
-    left:50%;
+    left:53%;
     position:absolute;
     overflow-y: auto;
     transform: translate(-50%,-50%);
@@ -764,7 +766,8 @@ body{
     padding: 0px 15px;
 }
 .familia #rua-familia h3{
-   text-align: center;
+    color: var(--cor-titulo);
+    text-align: center;
 }
 .familia #rua-familia p{
     width: 100%;
@@ -782,6 +785,7 @@ body{
     justify-content: space-between;
 }
 .familia #responsavel-familia h3{
+    color: var(--cor-titulo);
     text-align: center;
 }
 .familia #responsavel-familia a{
@@ -806,6 +810,7 @@ body{
 
 }
 .familia #id-familia h3{
+    color: var(--cor-titulo);
     text-align: center;
 }
 .familia #id-familia p{
@@ -813,6 +818,51 @@ body{
     font-weight: lighter;
     text-shadow: 1px 1px 2px var(--cor-sombra-texto);
 }
+.familia #nome-paciente{
+    width: 500px;
+    max-width: 700px;
+    position:relative;
+    text-align: center;
+    text-overflow: ellipsis;
+    border: 2px solid var(--cor-borda);
+    padding: 0px 15px;
+}
+.familia #nome-paciente p{
+    text-align: left;
+}
+.familia #altura-paciente, .familia #peso-paciente{
+    width: 100px;
+    position: relative;
+    text-align: center;
+    border: 2px solid var(--cor-borda);
+    padding: 0px 15px;
+}
+.familia #altura-paciente p, .familia #peso-paciente p{
+    text-align: center;
+}
+.familia #cpf-paciente, .familia #rg-paciente, .familia #telefone-paciente{
+    width: 150px;
+    position: relative;
+    text-align: center;
+    border: 2px solid var(--cor-borda);
+    padding: 0px 15px;
+}
+.familia #doencas-cronicas-paciente{
+    width: 500px;
+    max-width: 700px;
+    position: relative;
+    text-align: center;
+    border: 2px solid var(--cor-borda);
+    padding: 0px 15px;
+}
+.familia #alergias-paciente{
+    max-width: 550px;
+    position: relative;
+    text-align: center;
+    border: 2px solid var(--cor-borda);
+    padding: 0px 15px;
+}
+
 .page-visita{
     background-image: linear-gradient(to top, #fff, #fff);
     overflow-y: auto;
@@ -821,17 +871,17 @@ body{
     display: flex;
     text-align: center;
     font-size:18px;
-    background-color: #e2edff;
+    background-color: #fff;
     justify-content: space-between;
     border-radius:10px;
     border: 5px outset var(--cor-borda);
     color:var(--cor-texto2);
     box-shadow: 2px 4px 1px var(--cor-sombra-texto);
-    width: 80vw;
+    width: 85vw;
     height: auto;
-    margin:150px 0px ;
+    margin:120px 0px ;
     top:0;
-    left:50%;
+    left:53%;
     position:absolute;
     transform: translateX(-50%);
 }
@@ -846,7 +896,8 @@ body{
     padding: 0px 15px;
 }
 .visita #familia-id h3{
-   text-align: center;
+    color: var(--cor-titulo);
+    text-align: center;
 }
 .visita #familia-id p{
     width: 100%;
@@ -864,6 +915,7 @@ body{
     padding: 0px 15px;
 }
 .visita #data-visita h3{
+    color: var(--cor-titulo);
     text-align: center;
 }
 .visita #data-visita p{
@@ -887,6 +939,7 @@ body{
 
 }
 .visita #motivo-visita h3{
+    color: var(--cor-titulo);
     text-align: center;
 }
 .visita #motivo-visita p{
@@ -907,6 +960,7 @@ body{
 
 }
 .visita #status-visita h3{
+    color: var(--cor-titulo);
     text-align: center;
 }
 .visita #status-visita p{
@@ -914,6 +968,18 @@ body{
     font-weight: lighter;
     text-shadow: 1px 1px 2px var(--cor-sombra-texto);
 }
+ #statusVisita{
+    width: 64%;
+    position: relative;
+    border: none;
+    margin: auto;
+    transform: scale(1.5); /* Aumenta o tamanho em 1.5 vezes */
+    -webkit-transform: scale(1.5); 
+    -moz-transform: scale(1.5); 
+    -ms-transform: scale(1.5); 
+    -o-transform: scale(1.5); 
+}
+
 .btnsMicroarea{
     display:flex;
     align-items: center;
@@ -935,7 +1001,7 @@ body{
 #criarVisita:hover{
     background-color: var(--cor-fundo2);
 }
-#novaVisita{
+#novaVisita, #novoPaciente{
     padding: 15px;
     border-style:none;
     border-radius:5px;
@@ -945,7 +1011,7 @@ body{
     color:#fff;
     cursor:pointer;
 }
-#novaVisita:hover{
+#novaVisita:hover, #novoPaciente:hover{
     background-color: var(--cor-fundo2);
     transition: .3s;
 }

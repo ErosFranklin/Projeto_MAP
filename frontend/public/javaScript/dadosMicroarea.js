@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       const responsavelElement = document.createElement("a");
       responsavelElement.textContent = `${familia.responsavel}`;
-      responsavelElement.href = `/detalhesMicroarea/${familia.id_familia}`;
+      responsavelElement.href = `/detalhesMicroarea.html/${familia.id_familia}`;
       responsavelDiv.appendChild(responsavelElement);
 
       const idFamiliaElement = document.createElement("p");

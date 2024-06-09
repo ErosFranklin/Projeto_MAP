@@ -170,6 +170,40 @@ app.post("/visita", async (req, res) => {
   }
 });
 
+// Rota de Cadastro de Paciente
+app.post("/paciente", async (req, res) => {
+  const { id_paciente, nome, altura, peso, cpf, rg, telefone, email, doencas_cronicas, alergias, id_familia} = req.body;
+
+  if (
+    !id_paciente ||
+    !nome ||
+    !altura ||
+    !peso ||
+    !cpf ||
+    !rg ||
+    !telefone ||
+    !email ||
+    !doencas_cronicas ||
+    !alergias ||
+    !id_familia
+  ) {
+    return res
+      .status(400)
+      .json({ error: "Você precisa preencher todos os campos!" });
+  }
+
+  try {
+    const [rows] = await db.query(
+      "INSERT INTO paciente (id_paciente , nome, altura, peso, cpf, rg, telefone, email, doencas_cronicas, alergias, id_familia ) VALUES (?,?,?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      [id_paciente, nome, altura, peso, cpf, rg, telefone, email, doencas_cronicas, alergias, id_familia]
+    );
+    res.redirect("/");
+  } catch (error) {
+    console.error("Erro ao cadastrar paciente:", error);
+    res.status(500).json({ error: "Erro ao cadastrar paciente" });
+  }
+});
+
 
 // Rota de logout
 app.get("/logout", (req, res) => {
@@ -230,10 +264,43 @@ app.get("/visitas", (req, res) => {
   res.render("visitas.html");
 });
 
-app.get("/detalhesMicroarea/:id", (req, res) => {
-  const familiaId = req.params.id;
-  res.render("detalhesMicroarea.html", { familiaId });
+// Rota detalhes da Microárea
+// Servir o arquivo HTML e rota para buscar os dados do banco de dados
+app.get("/detalhesMicroarea.html/:id_familia", async (req, res) => {
+  try {
+    // Enviar o arquivo HTML como resposta
+    res.sendFile(path.join(__dirname, 'views', 'detalhesMicroarea.html'));
+  } catch (error) {
+    console.error("Erro ao enviar o arquivo HTML:", error);
+    res.status(500).json({ error: "Erro ao enviar o arquivo HTML" });
+  }
 });
+
+app.get("/detalhesMicroarea/:id_familia", async (req, res) => {
+  const { id_familia } = req.params;
+
+  try {
+    // Consultar dados da família e dos pacientes
+    const [familiaRows] = await db.query("SELECT * FROM familia WHERE id_familia = ?", [id_familia]);
+    const [pacientesRows] = await db.query("SELECT * FROM paciente WHERE id_familia = ?", [id_familia]);
+    
+    // Extrair dados da família e dos pacientes
+    const familia = familiaRows[0];
+    const pacientes = pacientesRows;
+
+    // Enviar os dados da família e dos pacientes como resposta
+    res.json({ familia, pacientes });
+  } catch (error) {
+    console.error("Erro ao buscar detalhes da família:", error);
+    res.status(500).json({ error: "Erro ao buscar detalhes da família" });
+  }
+});
+
+
+
+
+
+
 
 
 

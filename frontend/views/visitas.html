@@ -42,10 +42,10 @@
         </ul>
     </nav>
     <main>
-        <span class="titleMicroarea">
-            <h2 id="bairroTitulo">Visitas</h2>
+        <span class="title">
+            <h2>Visitas</h2>
         </span>
-        <div class="btnNovaMicroarea">
+        <div class="btnNovo">
             <button id="novaVisita">Nova Visita</button>
         </div>
         
@@ -54,25 +54,25 @@
                 <h2>Cadastrar Visita</h2>
                 <label for="id-agente">Seu ID:</label>
                 <div class="componentesM">
-                    <i class="fa-solid fa-location-dot"></i><input type="number" name="id-agente" id="id-agente" required>
+                    <i class="fa-solid fa-id-card"></i><input type="number" name="id-agente" id="id-agente" placeholder="ID do Agente" required>
                 </div>
                 <label for="id-familia">Id da Familia:</label>
                 <div class="componentesM">
-                    <i class="fa-solid fa-location-dot"></i><input type="number" name="id-familia" id="id-familia" required>
+                    <i class="fa-solid fa-people-roof"></i><input type="number" name="id-familia" id="id-familia" placeholder="ID da Familia" required>
                 </div>
                 <label for="visita-motivo">Motivo</label>
                 <div class="componentesM">
-                    <i class="fa-solid fa-location-dot"></i><input type="text" name="visita-motivo" id="visita-motivo" placeholder="Nome Completo" required>
+                    <i class="fa-solid fa-comment"></i><input type="text" name="visita-motivo" id="visita-motivo" placeholder="Descreva o Motivo da Visita" required>
                 </div>
                 <label for="visita-data">Data da Visita:</label>
                 <div class="componentesM">
-                    <i class="fa-solid fa-location-dot"></i><input type="date" name="visita-data" id="visita-data" placeholder="ex:3" required>
+                    <i class="fa-solid fa-calendar"></i><input type="date" name="visita-data" id="visita-data" placeholder="ex:3" required>
                 </div>
-                <label for="visita-status">Status da Visita:</label>
-                <div class="componentesM">
-                    <i class="fa-solid fa-location-dot"></i><input type="checkbox" name="visita-status" id="visita-status"  required>
+                <label for="visita-status">Status da Visita <small>(Visita em dias: Marcado, Visita Pendente: Em branco):</small></label>
+                <div class="componentesM" id="statusVisita">
+                    <input type="checkbox" name="visita-status" id="visita-status" placeholder="Caixinga" required>
                 </div>
-                <div class="btnsVisita">
+                <div class="btnsCadastro">
                     <button id="criarVisita" action="/visita">Criar</button>
                     <button id="fechar">Fechar</button>
                 </div>
