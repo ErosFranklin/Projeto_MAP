@@ -117,7 +117,7 @@ app.post("/views/esq_senha", async (req,res) =>{
         from: "contato.smaas@hotmail.com",
         to: email,
         subject: 'RECUPERAÇÃO DE SENHA',
-        text: `Sua senha é: ${senha}`
+        text: `Ola Agente! Aqui esta sua senha perdida/esquecida: ${senha}`
       };
 
       transporter.sendMail(mailOptions, (error, info) => {
@@ -313,7 +313,6 @@ app.get("/visitas", (req, res) => {
 });
 
 // Rota detalhes da Microárea
-// Servir o arquivo HTML e rota para buscar os dados do banco de dados
 app.get("/detalhesMicroarea.html/:id_familia", async (req, res) => {
   try {
     // Enviar o arquivo HTML como resposta
@@ -343,13 +342,6 @@ app.get("/detalhesMicroarea/:id_familia", async (req, res) => {
     res.status(500).json({ error: "Erro ao buscar detalhes da família" });
   }
 });
-
-
-
-
-
-
-
 
 
 // Iniciar o servidor
