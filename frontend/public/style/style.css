@@ -622,7 +622,7 @@ body{
 .btnNovaMicroarea{
     display: flex;
     top:5%;
-    right: 2%;
+    right: 1%;
     position:fixed;
 }
 .titleMicroarea h2{
@@ -813,7 +813,10 @@ body{
     font-weight: lighter;
     text-shadow: 1px 1px 2px var(--cor-sombra-texto);
 }
-
+.page-visita{
+    background-image: linear-gradient(to top, #fff, #fff);
+    overflow-y: auto;
+}
 .visita{
     display: flex;
     text-align: center;
@@ -824,35 +827,40 @@ body{
     border: 5px outset var(--cor-borda);
     color:var(--cor-texto2);
     box-shadow: 2px 4px 1px var(--cor-sombra-texto);
-    width: 80%;
+    width: 80vw;
     height: auto;
-    margin-bottom:50px;
-    top:350px;
+    margin:50px  0px;
+    top:50px;
     left:50%;
     position:absolute;
-    overflow-y: auto;
-    transform: translate(-50%,-50%);
+    transform: translateX(-50%);
 }
 
-.visita #id-familia{
+.visita #familia-id{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
     position:relative;
     border: 2px solid var(--cor-borda);
     width: 500px;
     padding: 0px 15px;
 }
-.visita #id-familia h3{
+.visita #familia-id h3{
    text-align: center;
 }
-.visita #id-familia p{
+.visita #familia-id p{
     width: 100%;
-    text-align: left;
+    text-align: center;
     font-weight: lighter;
     text-shadow: 1px 1px 2px var(--cor-sombra-texto);
 }
 .visita #data-visita{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
     position:relative;
     border: 2px solid var(--cor-borda);
-    width: 300px;
+    width: 400px;
     padding: 0px 15px;
 }
 .visita #data-visita h3{
@@ -860,13 +868,17 @@ body{
 }
 .visita #data-visita p{
     width: 100%;
-    text-align: left;
+    text-align: center;
     font-weight: lighter;
     text-shadow: 1px 1px 2px var(--cor-sombra-texto);
 }
 
 .visita #motivo-visita{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
     max-width: 700px;
+    height: auto;
     position:relative;
     text-align: center;
     text-overflow: ellipsis;
@@ -881,6 +893,61 @@ body{
     width: 100%;
     font-weight: lighter;
     text-shadow: 1px 1px 2px var(--cor-sombra-texto);
+}
+.visita #status-visita{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 400px;
+    position:relative;
+    text-align: center;
+    text-overflow: ellipsis;
+    border: 2px solid var(--cor-borda);
+    padding: 0px 15px;
+
+}
+.visita #status-visita h3{
+    text-align: center;
+}
+.visita #status-visita p{
+    width: 100%;
+    font-weight: lighter;
+    text-shadow: 1px 1px 2px var(--cor-sombra-texto);
+}
+.btnsMicroarea{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:30px;
+}
+#criarVisita{
+    background-color: var(--cor-fundo);
+    border-style: none;
+    border-radius: 5px;
+    font-size:16px;
+    width: 100px;
+    color:#fff;
+    padding: 5px;
+    margin-right:10px;
+    cursor:pointer;
+    transition: .3s;
+}
+#criarVisita:hover{
+    background-color: var(--cor-fundo2);
+}
+#novaVisita{
+    padding: 15px;
+    border-style:none;
+    border-radius:5px;
+    font-size: 1em;
+    background-color: var(--cor-fundo);
+    text-align: center;
+    color:#fff;
+    cursor:pointer;
+}
+#novaVisita:hover{
+    background-color: var(--cor-fundo2);
+    transition: .3s;
 }
 .conta{
     background-image: linear-gradient(to top,#fff, #fff);

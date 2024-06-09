@@ -26,16 +26,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.querySelector('#criarVisita').addEventListener('click', function() {
+        const idFamilia = document.querySelector('#id-familia').value
+        const idAgente = document.querySelector('#id-agente').value
         const visitaMotivo = document.querySelector('#visita-motivo').value;
         const visitaData = document.querySelector('#visita-data').value;
         const statusVisita = document.querySelector('#visita-status').checked;
     
         console.log('Dados do formulário:', {
-            visitaMotivo, visitaData, statusVisita
+            idFamilia, idAgente, visitaMotivo, visitaData, statusVisita
         });
     
-        if (visitaMotivo && visitaData && statusVisita) {
+        if (idFamilia && idAgente && visitaMotivo && visitaData && statusVisita !== undefined) {
             const visita = {
+                id_familia: idFamilia,
+                id_agente: idAgente,
                 motivo: visitaMotivo,
                 data_da_visita: visitaData,
                 status_da_visita: statusVisita
@@ -56,12 +60,12 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(data => {
                 console.log('Resposta da API:', data);
-                textForm.textContent = "Família cadastrada com sucesso!";
+                textForm.textContent = "Visita cadastrada com sucesso!";
                 textForm.style.color = "green";
             })
             .catch(error => {
                 console.error('Erro:', error);
-                textForm.textContent = "Erro ao cadastrar família!";
+                textForm.textContent = "Erro ao cadastrar Visita!";
                 textForm.style.color = "red";
             });
         } else {

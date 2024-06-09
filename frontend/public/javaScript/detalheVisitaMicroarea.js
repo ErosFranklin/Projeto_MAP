@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   
       console.log(visita);
   
-      const visitaDiv = document.getElementById("id-familia");
+      const visitaDiv = document.getElementById("familia-id");
       const dataVisitaDiv = document.getElementById("data-visita")
       const motivoVisitaDiv = document.getElementById("motivo-visita")
       const statusVisitaDiv = document.getElementById("status-visita")

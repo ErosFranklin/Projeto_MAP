@@ -144,11 +144,14 @@ app.post("/familia", async (req, res) => {
 
 // Rota de Cadastro de Visita
 app.post("/visita", async (req, res) => {
-  const { data_da_visita, motivo } = req.body;
+  const { id_familia, id_agente, data_da_visita, motivo, status_da_visita} = req.body;
 
   if (
+    !id_familia ||
+    !id_agente ||
     !data_da_visita ||
-    !motivo 
+    !motivo ||
+    !status_da_visita === undefined
   ) {
     return res
       .status(400)
@@ -157,8 +160,8 @@ app.post("/visita", async (req, res) => {
 
   try {
     const [rows] = await db.query(
-      "INSERT INTO visita ( data_da_visita, motivo ) VALUES (?, ?, ?)",
-      [ data_da_visita, motivo]
+      "INSERT INTO visita (id_familia , id_agente, data_da_visita, motivo, status_da_visita ) VALUES (?,?,?, ?, ?)",
+      [id_familia, id_agente, data_da_visita, motivo, status_da_visita ? 1 : 0]
     );
     res.redirect("/");
   } catch (error) {
@@ -203,7 +206,7 @@ app.get("/familia", async (req, res) => {
 //Rota para buscar informacoes visita
 app.get("/visita", async (req, res) => {
   try {
-    const [rows] = await db.query("SELECT id_familia, data_da_visita, motivo FROM visita ORDER BY id_familia");
+    const [rows] = await db.query("SELECT id_familia, data_da_visita, motivo, status_da_visita FROM visita ORDER BY id_familia");
     res.json(rows);
   } catch (error) {
     console.error("Erro ao buscar visita:", error);
