@@ -7,7 +7,5 @@ document.addEventListener('DOMContentLoaded', function() {
             if (microarea) {
                 document.getElementById('bairroTitulo').textContent = microarea.nome;
                 
-            } else {
-                alert('Microárea não encontrada!');
             }
 });

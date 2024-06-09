@@ -630,7 +630,7 @@ body{
     font-size: 2em;
     left:8%;
     top:2%;
-    position:fixed;
+    position:absolute;
 }
 #novaMicroarea{
     padding: 15px;
@@ -829,8 +829,8 @@ body{
     box-shadow: 2px 4px 1px var(--cor-sombra-texto);
     width: 80vw;
     height: auto;
-    margin:50px  0px;
-    top:50px;
+    margin:150px 0px ;
+    top:0;
     left:50%;
     position:absolute;
     transform: translateX(-50%);
