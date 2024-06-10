@@ -302,3 +302,20 @@ alter table visita add column status_da_visita boolean not null;
 update visita set status_da_visita = false where id_visita = 1;
 update visita set status_da_visita = true where id_visita = 2;
 update visita set status_da_visita = true where id_visita = 3;
+
+/* criando nova coluna na tabela paciente para terem ligacao com a tabela familia, atraves do id_familia, precisa adicionar valores aos pacientes que
+estavam cadastrados para o id_familia nao ser igual a null.*/
+ALTER TABLE paciente ADD COLUMN id_familia INT UNSIGNED NOT NULL;
+
+UPDATE paciente SET id_familia = 1 WHERE id_paciente = 3;
+UPDATE paciente SET id_familia = 1 WHERE id_paciente = 4;
+UPDATE paciente SET id_familia = 2 WHERE id_paciente = 5;
+UPDATE paciente SET id_familia = 2 WHERE id_paciente = 6;
+UPDATE paciente SET id_familia = 3 WHERE id_paciente = 1;
+UPDATE paciente SET id_familia = 3 WHERE id_paciente = 2;
+
+/*Apos adicionar valores ao id_familia de cada paciente com base no seu id, agora sim pode transformar o id_familia em chave estrangeira na tabela paciente. */
+/*Adicionando a restricao de chave estrangeira*/
+
+ALTER TABLE paciente
+ADD CONSTRAINT fk_familia FOREIGN KEY (id_familia) REFERENCES familia(id_familia) ON DELETE CASCADE;
