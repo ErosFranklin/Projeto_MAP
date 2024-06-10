@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Microarea</title>
+    <link rel="stylesheet" href="../public/style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/uuid@latest/dist/umd/uuidv4.min.js"></script>
+</head>
+<body class="Microarea">
+    <nav class="menuLateral">
+        <div class="btn-expandir">
+            <i class="fa-solid fa-bars" id="btnExpandir"></i>
+        </div>
+        <ul>
+            <li class="item-menu">
+                <a href="../views/conta.html">
+                    <span class="icone"><i class="fa-solid fa-user"></i></span>
+                    <span class="txt-link">Conta</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="../views/microarea.html">
+                    <span class="icone"><i class="fa-solid fa-location-dot"></i></span>
+                    <span class="txt-link">Microarea</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="/visitas">
+                    <span class="icone"><i class="fa-solid fa-house-circle-check"></i></span>
+                    <span class="txt-link">Visitas</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="/logout">
+                    <span class="icone"><i class="fa-solid fa-arrow-right-from-bracket"></i></span>
+                    <span class="txt-link">Sair</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <span class="title">
+            <h2>Bairro</h2>
+        </span>
+        <div class="btnNovo">
+            <button id="novaMicroarea">Nova Familia</button>
+        </div>
+        
+        <div id="overlay" class="overlay">
+            <div id="modal" class="modal">
+                <h2>Cadastrar Familia</h2>
+                <label for="nomeMicroarea">Responsavel</label>
+                <div class="componentesM">
+                    <i class="fa-solid fa-user"></i><input type="text" name="nomeResponsavel" id="nomeResponsavel" placeholder="Nome Completo" required>
+                </div>
+                <label for="numDependentes">Numero de Dependentes:</label>
+                <div class="componentesM">
+                    <i class="fa-solid fa-people-group"></i><input type="text" name="numDependentes" id="numDependentes" placeholder="ex:3" required>
+                </div>
+                <label for="familia-bairro">Bairro:</label>
+                <div class="componentesM">
+                    <i class="fa-solid fa-location-dot"></i><input type="text" name="familia-bairro" id="familia-bairro" placeholder="ex:Centro" required>
+                </div>
+                <label for="familia-rua">Rua:</label>
+                <div class="componentesM">
+                    <i class="fa-solid fa-road"></i><input type="text" name="familia-rua" id="familia-rua" placeholder="ex: Rua Tenente Nicolau Lopes" required>
+                </div>
+                <label for="familia-numero">Numero da Casa:</label>
+                <div class="componentesM">
+                    <i class="fa-solid fa-house-circle-check"></i><input type="number" name="familia-numero" id="familia-numero" placeholder="ex:205" required>
+                </div>
+                <div class="btnsCadastro">
+                    <button id="criarMicroarea" action="/familia">Criar</button>
+                    <button id="fechar">Fechar</button>
+                </div>
+            </div>
+        </div>
+        <div id="microarea-container" class="microarea-container">
+            <div class="familia">
+                <div id="rua-familia">
+                    <h3>Rua</h3>
+                </div>
+                <div  id="responsavel-familia">
+                    <h3>Responsavel</h3>
+                </div>
+                <div  id="id-familia">
+                    <h3>Id da Familia</h3>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../public/javaScript/addMicroarea.js"></script>
+    <script src="../public/javaScript/dadosMicroarea.js"></script>
+    <script src="../public/javaScript/menuLateral.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitas</title>
+    <link rel="stylesheet" href="../public/style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/uuid@latest/dist/umd/uuidv4.min.js"></script>
+</head>
+<body class="page-visita">
+    <nav class="menuLateral">
+        <div class="btn-expandir">
+            <i class="fa-solid fa-bars" id="btnExpandir"></i>
+        </div>
+        <ul>
+            <li class="item-menu">
+                <a href="../views/conta.html">
+                    <span class="icone"><i class="fa-solid fa-user"></i></span>
+                    <span class="txt-link">Conta</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="../views/microarea.html">
+                    <span class="icone"><i class="fa-solid fa-location-dot"></i></span>
+                    <span class="txt-link">Microarea</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="/visitas">
+                    <span class="icone"><i class="fa-solid fa-house-circle-check"></i></span>
+                    <span class="txt-link">Visitas</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="/logout">
+                    <span class="icone"><i class="fa-solid fa-arrow-right-from-bracket"></i></span>
+                    <span class="txt-link">Sair</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <span class="title">
+            <h2>Visitas</h2>
+        </span>
+        <div class="btnNovo">
+            <button id="novaVisita">Nova Visita</button>
+        </div>
+        
+        <div id="overlay" class="overlay">
+            <div id="modal" class="modal">
+                <h2>Cadastrar Visita</h2>
+                <label for="id-agente">Seu ID:</label>
+                <div class="componentesM">
+                    <i class="fa-solid fa-id-card"></i><input type="number" name="id-agente" id="id-agente" placeholder="ID do Agente" required>
+                </div>
+                <label for="id-familia">Id da Familia:</label>
+                <div class="componentesM">
+                    <i class="fa-solid fa-people-roof"></i><input type="number" name="id-familia" id="id-familia" placeholder="ID da Familia" required>
+                </div>
+                <label for="visita-motivo">Motivo</label>
+                <div class="componentesM">
+                    <i class="fa-solid fa-comment"></i><input type="text" name="visita-motivo" id="visita-motivo" placeholder="Descreva o Motivo da Visita" required>
+                </div>
+                <label for="visita-data">Data da Visita:</label>
+                <div class="componentesM">
+                    <i class="fa-solid fa-calendar"></i><input type="date" name="visita-data" id="visita-data" placeholder="ex:3" required>
+                </div>
+                <label for="visita-status">Status da Visita <small>(Visita em dias: Marcado, Visita Pendente: Em branco):</small></label>
+                <div class="componentesM" id="statusVisita">
+                    <input type="checkbox" name="visita-status" id="visita-status" placeholder="Caixinga" required>
+                </div>
+                <div class="btnsCadastro">
+                    <button id="criarVisita" action="/visita">Criar</button>
+                    <button id="fechar">Fechar</button>
+                </div>
+            </div>
+        </div>
+        <div id="visita-container" class="visita-container">
+            <div class="visita">
+                <div id="familia-id">
+                    <h3>Id da Familia</h3>
+                </div>
+                <div  id="data-visita">
+                    <h3>Data da Visita</h3>
+                </div>
+                <div id="motivo-visita">
+                    <h3>Motivo</h3>
+                </div>
+                <div id="status-visita">
+                    <h3>Status da Visita</h3>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../public/javaScript/addVisita.js"></script>
+    <script src="../public/javaScript/detalheVisitaMicroarea.js"></script>
+    <script src="../public/javaScript/menuLateral.js"></script>
+</body>
+</html>

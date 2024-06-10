@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes da Microarea</title>
+    <link rel="stylesheet" href="../public/style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body class="Microarea">
+        <nav class="menuLateral">
+        <div class="btn-expandir">
+            <i class="fa-solid fa-bars" id="btnExpandir"></i>
+        </div>
+        <ul>
+            <li class="item-menu">
+                <a href="../views/conta.html">
+                    <span class="icone"><i class="fa-solid fa-user"></i></span>
+                    <span class="txt-link">Conta</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="../views/microarea.html">
+                    <span class="icone"><i class="fa-solid fa-location-dot"></i></span>
+                    <span class="txt-link">Microarea</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="/visitas">
+                    <span class="icone"><i class="fa-solid fa-house-circle-check"></i></span>
+                    <span class="txt-link">Visitas</span>
+                </a>
+            </li>
+            <li class="item-menu">
+                <a href="/logout">
+                    <span class="icone"><i class="fa-solid fa-arrow-right-from-bracket"></i></span>
+                    <span class="txt-link">Sair</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+   
+    <main>
+        <div class="title">
+            <h2>Detalhes da Familia</h2>
+            <div class="title-familia"></div>
+        </div>
+        <div class="btnNovo">
+            <button id="novoPaciente">Novo Paciente</button>
+        </div>
+        
+        <div id="overlay" class="overlay">
+            <div id="modal" class="modal">
+                <h2>Cadastrar Paciente</h2>
+                <label for="id-paciente">Id do Paciente:</label>
+                <div class="componentesM">
+                    <i class="fa-solid fa-id-card"></i><input type="number" name="id-paciente" id="id-paciente" placeholder="ID" required>
+                </div>
+                <label for="paciente-nome">Nome Completo do Paciente:</label>
+                <div class="componentesM">
+                    <i class="fa-solid fa-user"></i><input type="text" name="paciente-nome" id="paciente-nome" placeholder="Nome e Sobrenome" required>
+                </div>
+                <label for="paciente-altura">Altura:</label>
+                <div class="componentesM">
+                    <i class="fa-solid fa-person-arrow-up-from-line"></i><input type="text" name="paciente-altura" id="paciente-altura" placeholder="ex:1.87" required>
+                </div>
+                <label for="paciente-peso">Peso:</label>
+                <div class="componentesM">
+                    <i class="fa-solid fa-weight-hanging"></i><input type="text" name="paciente-peso" id="paciente-peso" placeholder="ex:88.7" required>
+                </div>
+                <label for="paciente-cpf">CPF:</label>
+                <div class="componentesM">
+                    <i class="fa-solid fa-address-card"></i><input type="text" name="paciente-cpf" id="paciente-cpf" placeholder="ex0976543212" required>
+                </div>
+                <label for="paciente-rg">RG:</label>
+                <div class="componentesM">
+                    <i class="fa-solid fa-fingerprint"></i><input type="text" name="paciente-rg" id="paciente-rg" placeholder="ex:1234567" required>
+                </div>
+                <label for="paciente-telefone">Telefone:</label>
+                <div class="componentesM">
+                    <i class="fa-solid fa-phone"></i><input type="text" name="paciente-telefone" id="paciente-telefone" placeholder="87976543213" required>
+                </div>
+                <label for="paciente-email">Email:</label>
+                <div class="componentesM">
+                    <i class="fa-solid fa-envelope"></i><input type="email" name="paciente-email" id="paciente-email" placeholder="ex:paciente@abc.com" required>
+                </div>
+                <label for="paciente-doencas-cronicas">Doencas Cronicas:</label>
+                <div class="componentesM">
+                    <i class="fa-solid fa-pills"></i><input type="text" name="paciente-doencas-cronicas" id="paciente-doencas-cronicas" placeholder="Nome da(s) doenca(s)" required>
+                </div>
+                <label for="paciente-alergias">Alergias:</label>
+                <div class="componentesM">
+                    <i class="fa-solid fa-head-side-cough"></i><input type="text" name="paciente-alergias" id="paciente-alergias" placeholder="Nome da(s) alergia(s)" required>
+                </div>
+                <label for="id-familia">ID da Familia:</label>
+                <div class="componentesM">
+                    <i class="fa-solid fa-people-roof"></i><input type="number" name="id-familia" id="id-familia" placeholder="Confirme o ID da Familia" required>
+                </div>
+                <div class="btnsCadastro">
+                    <button id="criarPaciente" action="/paciente">Criar</button>
+                    <button id="fechar">Fechar</button>
+                </div>
+            </div>
+        </div>
+        <div id="microarea-container" class="microarea-container">
+            <div class="familia">
+                <div id="nome-paciente">
+                    <h3>Nome</h3>
+
+                </div>
+                <div id="altura-paciente">
+                    <h3>Altura</h3>
+                </div>
+                <div id="peso-paciente">
+                    <h3>Peso</h3>
+                </div>
+                <div id="cpf-paciente">
+                    <h3>CPF</h3>
+                </div>
+                <div id="rg-paciente">
+                    <h3>RG</h3>
+                </div>
+                <div id="telefone-paciente">
+                    <h3>Telefone</h3>
+                </div>
+                <div id="doencas-cronicas-paciente">
+                    <h3>Doencas Cronicas</h3>
+                </div>
+                <div id="alergias-paciente">
+                    <h3>Alergias</h3>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../public/javaScript/addPaciente"></script>
+    <script src="../public/javaScript/script_detalhesMicroarea.js"></script>
+    <script src="../public/javaScript/menuLateral.js"></script>
+</body>
+</html>
