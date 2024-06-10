@@ -24,9 +24,19 @@ document.addEventListener("DOMContentLoaded", async () => {
       const telefonePacienteDiv = document.getElementById("telefone-paciente");
       const doencasCronicasPacienteDiv = document.getElementById("doencas-cronicas-paciente");
       const alergiasPacienteDiv = document.getElementById("alergias-paciente");
+      const tituloFamiliaDiv = document.querySelector(".title-familia");
+
+      const tituloResponsavel = document.createElement("h4");
+      tituloResponsavel.textContent = `${familia.responsavel}`;
+      tituloFamiliaDiv.appendChild(tituloResponsavel);
+
+      const tituloIDFamilia = document.createElement("h6");
+      tituloIDFamilia.textContent = `ID da Familia: ${familia.id_familia}`;
+      tituloFamiliaDiv.appendChild(tituloIDFamilia);
       
       // Criar e preencher elementos HTML para cada paciente
       pacientes.forEach(paciente => {
+        
         const nomePacienteElement = document.createElement("p");
         nomePacienteElement.textContent = `${paciente.nome}`;
         nomePacienteDiv.appendChild(nomePacienteElement);

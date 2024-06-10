@@ -6,11 +6,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       console.log(visita);
   
       const visitaDiv = document.getElementById("familia-id");
-      const dataVisitaDiv = document.getElementById("data-visita")
-      const motivoVisitaDiv = document.getElementById("motivo-visita")
-      const statusVisitaDiv = document.getElementById("status-visita")
+      const dataVisitaDiv = document.getElementById("data-visita");
+      const motivoVisitaDiv = document.getElementById("motivo-visita");
+      const statusVisitaDiv = document.getElementById("status-visita");
 
       visita.forEach(visita => {
+
         const visitaElement = document.createElement("p");
         visitaElement.textContent = `${visita.id_familia}`;
         visitaDiv.appendChild(visitaElement);

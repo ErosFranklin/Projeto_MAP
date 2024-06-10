@@ -468,16 +468,31 @@ body{
     opacity: 1;
 }
 .title{
+    display:flex;
+    flex-direction: row;
+    left:8%;
+    top:1%;
+    position:absolute;
     font-size:1.2em;
     color:var(--cor-titulo);
     text-shadow:2px 2px 3px var(--cor-sombra-texto);;
 }
+
 .title h2{
-    display:flex;
+    position:relative;
     font-size: 2em;
-    left:8%;
-    top:2%;
+}
+.title-familia {
+    display:flex;
+    flex-direction: row;
+    align-items:normal;
+    width: 30vw;
+    top:60px;
     position:absolute;
+}
+.title h4, .title h6{
+    padding-right:30px;
+    position:relative;
 }
 .microarea-container {
 
